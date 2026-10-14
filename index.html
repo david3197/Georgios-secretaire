@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#14234b">
+<title>مبنى الخدمات — كنيسة جورجيوس</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Reem+Kufi:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14234b; --ink2:#1f336b; --ink3:#2d4688;
+  --gold:#c8a04a; --gold2:#e9d29b;
+  --bg:#e9edf3; --paper:#ffffff; --line:#d6dce8; --txt:#18213a; --mut:#66708a;
+  --free:#12875a; --freeBg:#e3f4eb; --freeLine:#b5dfca;
+  --busy:#a8233b; --busyBg:#fbe7ea; --busyLine:#efb8c0;
+  --part:#c2700f; --partBg:#fdeed8;
+  --r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Cairo',system-ui,sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;line-height:1.55;font-size:15px;
+  background-image:radial-gradient(1200px 500px at 100% -10%,rgba(45,70,136,.10),transparent 60%)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+h1,h2,h3{font-family:'Reem Kufi','Cairo',sans-serif;font-weight:600;letter-spacing:0}
+
+/* ---------- top bar ---------- */
+.top{background:linear-gradient(90deg,var(--ink),var(--ink2));color:#fff;border-bottom:3px solid var(--gold);position:sticky;top:0;z-index:30}
+.top-in{max-width:1280px;margin:auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand svg{flex:none}
+.brand b{font-family:'Reem Kufi',sans-serif;font-size:21px;font-weight:600;display:block;line-height:1.15}
+.brand small{opacity:.75;font-size:12.5px}
+.sp{flex:1}
+.clock{display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px;background:rgba(255,255,255,.1);padding:6px 14px;border-radius:99px;white-space:nowrap}
+.pulse{width:9px;height:9px;border-radius:50%;background:#43d99a;box-shadow:0 0 0 0 rgba(67,217,154,.7);animation:pl 2s infinite}
+@keyframes pl{70%{box-shadow:0 0 0 8px rgba(67,217,154,0)}100%{box-shadow:0 0 0 0 rgba(67,217,154,0)}}
+.tbtn{padding:7px 14px;border-radius:10px;background:rgba(255,255,255,.12);font-weight:600;font-size:13.5px;white-space:nowrap;position:relative}
+.tbtn:hover{background:rgba(255,255,255,.22)}
+.role{font-size:12.5px;padding:3px 11px;border-radius:99px;background:var(--gold);color:var(--ink);font-weight:700;white-space:nowrap}
+.role.v{background:rgba(255,255,255,.2);color:#fff}
+.demo{background:#fff3cd;color:#6a4d00;text-align:center;font-size:13px;padding:6px 12px;font-weight:600}
+.nb{position:absolute;top:-6px;inset-inline-end:-6px;min-width:20px;height:20px;border-radius:99px;background:#e5243b;color:#fff;font-size:11.5px;font-weight:700;display:grid;place-items:center;padding:0 5px;border:2px solid var(--ink);animation:bump 1.6s infinite}
+@keyframes bump{0%,80%,100%{transform:scale(1)}90%{transform:scale(1.18)}}
+.mi .nb,.pl .nb{position:static;border:0;margin-inline-start:auto;animation:none}
+
+/* ---------- layout ---------- */
+.grid{max-width:1280px;margin:auto;padding:22px 20px 60px;display:grid;grid-template-columns:268px minmax(0,1fr);gap:26px;align-items:start}
+.side{position:sticky;top:84px;display:flex;flex-direction:column;gap:16px}
+
+/* ---------- building (navigation) ---------- */
+.tower{background:var(--ink);border-radius:18px 18px 10px 10px;padding:0 12px 14px;box-shadow:0 14px 34px -14px rgba(20,35,75,.55)}
+.roof{display:block;width:100%;height:auto;margin:0 0 6px}
+.fl{display:flex;align-items:center;gap:10px;width:100%;text-align:start;padding:9px 12px;margin-top:6px;border-radius:8px;color:#dfe6fb;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);transition:background .15s}
+.fl:hover{background:rgba(255,255,255,.14)}
+.fl .no{font-family:'Reem Kufi';font-size:20px;width:22px;color:var(--gold2);text-align:center}
+.fl .nm{flex:1;line-height:1.25;font-weight:600;font-size:14px}
+.fl .nm small{display:block;font-weight:400;font-size:12px;opacity:.7}
+.fl .dots{display:flex;gap:3px;flex-wrap:wrap;max-width:54px;justify-content:flex-end}
+.fl .dots i{width:9px;height:9px;border-radius:2px;background:#3fcf92}
+.fl .dots i.b{background:#ee5b73}
+.fl .dots i.p{background:#f0a23a}
+.fl.pg{border-style:dashed;border-color:rgba(233,210,155,.45)}
+.fl.on{background:#fff;color:var(--ink);border-color:#fff;box-shadow:0 6px 16px -6px rgba(0,0,0,.4)}
+.fl.on .no{color:var(--gold)}
+.fl.on .dots i{background:#12875a}.fl.on .dots i.b{background:#a8233b}.fl.on .dots i.p{background:#c2700f}
+.ground{height:6px;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold));margin:14px -4px 0}
+.menu{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:8px}
+.menu h3{font-size:14px;color:var(--mut);padding:6px 10px 4px}
+.mi{display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px;border-radius:10px;font-weight:600;text-align:start}
+.mi svg{flex:none;color:var(--ink3)}
+.mi:hover{background:#eef2fa}
+.mi.on{background:var(--ink);color:#fff}.mi.on svg{color:var(--gold2)}
+
+/* ---------- headings / controls ---------- */
+.head{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.head h1{font-size:34px;color:var(--ink);line-height:1.1}
+.head h1 em{font-style:normal;color:var(--mut);font-size:22px;font-weight:500}
+.head p{color:var(--mut);font-weight:500;margin-top:4px}
+.backb{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:99px;background:#fff;border:1px solid var(--line);font-weight:700;color:var(--ink);align-self:center}
+.backb:hover{border-color:var(--ink3)}
+html[dir=ltr] .backb svg{transform:scaleX(-1)}
+.ctrl{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:flex;gap:18px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px}
+.ctrl label.l{display:block;font-size:13px;font-weight:700;color:var(--mut);margin-bottom:6px}
+.week{display:flex;align-items:center;gap:6px}
+.days{display:flex;gap:6px;flex-wrap:wrap}
+.wn{width:32px;height:52px;border-radius:10px;border:1px solid var(--line);background:#f6f8fc;display:grid;place-items:center;color:var(--ink3)}
+.wn:hover{border-color:var(--ink3)}
+html[dir=rtl] .wn svg{transform:scaleX(-1)}
+.wl{font-size:12.5px;color:var(--mut);font-weight:600;margin-top:5px}
+.dc{min-width:56px;padding:6px 8px;border-radius:10px;border:1px solid var(--line);background:#f6f8fc;text-align:center;line-height:1.25}
+.dc small{display:block;font-size:12px;color:var(--mut)}
+.dc b{font-size:16px}
+.dc:hover:not([disabled]){border-color:var(--ink3)}
+.dc.on{background:var(--ink);border-color:var(--ink);color:#fff}.dc.on small{color:var(--gold2)}
+.dc.td{box-shadow:inset 0 -3px 0 var(--gold)}
+.dc[disabled]{opacity:.35;cursor:not-allowed}
+.fld{padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;min-width:150px}
+.fld:focus{border-color:var(--ink3);outline:none;box-shadow:0 0 0 3px rgba(45,70,136,.15)}
+textarea.fld{width:100%;min-height:72px;resize:vertical}
+.btn{padding:10px 20px;border-radius:10px;background:var(--ink);color:#fff;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn:hover{background:var(--ink3)}
+.btn.gold{background:var(--gold);color:var(--ink)}.btn.gold:hover{background:#d6b05c}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}.btn.ghost:hover{border-color:var(--ink3)}
+.btn.red{background:var(--busy)}.btn.red:hover{background:#8c1b30}
+.btn.grn{background:var(--free)}.btn.grn:hover{background:#0e6f4a}
+.btn.sm{padding:6px 12px;font-size:13.5px;border-radius:8px}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.ic{width:34px;height:34px;border-radius:8px;display:inline-grid;place-items:center;color:var(--mut);border:1px solid var(--line);background:#fff}
+.ic:hover{color:var(--ink);border-color:var(--ink3)}.ic.del:hover{color:var(--busy);border-color:var(--busy)}
+
+/* ---------- free-now panel ---------- */
+.fpanel{background:#fff;border:1px solid var(--freeLine);border-inline-start:6px solid var(--free);border-radius:var(--r);padding:14px 16px;margin-bottom:14px;background-image:linear-gradient(90deg,var(--freeBg),transparent 40%)}
+.fpanel h2{font-size:21px;color:var(--free);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.fpanel h2 b{font-family:'Reem Kufi';background:var(--free);color:#fff;border-radius:99px;padding:0 12px;font-size:17px;line-height:26px}
+.fpanel .hint{color:var(--mut);font-size:13px;font-weight:500;margin-top:2px}
+.fg{display:flex;gap:10px;align-items:flex-start;margin-top:10px}
+.fg .fn{min-width:104px;font-weight:700;color:var(--ink);padding-top:5px;font-size:14px}
+.fcs{display:flex;flex-wrap:wrap;gap:6px;flex:1}
+.fc{padding:5px 12px;border-radius:99px;background:#fff;border:1.5px solid var(--freeLine);font-weight:600;font-size:14px;display:inline-flex;gap:7px;align-items:center}
+.fc small{color:var(--mut);font-weight:500;font-size:12px}
+.fc:hover{background:var(--free);color:#fff;border-color:var(--free)}.fc:hover small{color:#d4f1e3}
+
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.st{display:flex;align-items:center;gap:10px;padding:8px 16px;border-radius:12px;border:1px solid var(--line);background:#fff;font-weight:600}
+.st b{font-family:'Reem Kufi';font-size:22px;line-height:1}
+.st i{width:11px;height:11px;border-radius:3px;background:var(--ink3)}
+.st.f i{background:var(--free)}.st.b i{background:var(--busy)}
+.st.on{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+
+.board{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.scale,.row{display:grid;grid-template-columns:150px 190px minmax(240px,1fr) auto;gap:16px;align-items:center;padding:0 16px}
+.scale{height:34px;background:#f1f4fa;border-bottom:1px solid var(--line);font-size:12px;color:var(--mut);font-weight:600}
+.scale .tlh{grid-column:3;position:relative;height:100%}
+.scale .tlh span{position:absolute;top:50%;transform:translate(50%,-50%)}
+html[dir=ltr] .scale .tlh span{transform:translate(-50%,-50%)}
+.row{padding-top:13px;padding-bottom:13px;border-bottom:1px solid var(--line);position:relative}
+.row:last-child{border-bottom:0}
+.row::before{content:"";position:absolute;inset-block:0;inset-inline-start:0;width:6px;background:var(--free)}
+.row.busy::before{background:var(--busy)}.row.partial::before{background:var(--part)}
+.row.busy{background:linear-gradient(90deg,var(--busyBg),transparent 55%)}
+.row.free{background:linear-gradient(90deg,var(--freeBg),transparent 55%)}
+.row.partial{background:linear-gradient(90deg,var(--partBg),transparent 55%)}
+.chip{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:14px;padding:4px 13px;border-radius:99px;color:#fff;background:var(--free)}
+.row.busy .chip{background:var(--busy)}.row.partial .chip{background:var(--part)}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:#fff;opacity:.9}
+.det{font-size:13px;color:var(--mut);margin-top:5px;line-height:1.35}
+.det b{color:var(--busy)}
+.rn{font-weight:700;font-size:16.5px;display:flex;align-items:center;gap:8px;line-height:1.25}
+.rn svg{color:var(--ink3);flex:none}
+.rs{font-size:12.5px;color:var(--mut)}
+.tl{position:relative;height:38px;border-radius:9px;overflow:hidden;background-color:var(--freeBg);border:1px solid var(--freeLine);
+  background-image:linear-gradient(to right,rgba(20,35,75,.10) 1px,transparent 1px);background-size:calc(100%/var(--hrs,17)) 100%}
+.tl i{position:absolute;top:3px;bottom:3px;border-radius:6px;background:var(--busy);color:#fff;font-size:12px;font-style:normal;font-weight:600;padding:0 8px;display:flex;align-items:center;overflow:hidden;white-space:nowrap;box-shadow:0 1px 0 rgba(0,0,0,.15)}
+.tl i.ad{background:repeating-linear-gradient(135deg,var(--busy),var(--busy) 10px,#8d1d32 10px,#8d1d32 20px)}
+.tl .mk{position:absolute;top:0;bottom:0;width:3px;margin-inline-start:-1.5px;background:var(--ink);z-index:2}
+.tl .mk::before{content:"";position:absolute;top:-1px;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top:7px solid var(--ink)}
+.acts{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}
+.empty{background:var(--paper);border:1px dashed #b8c1d6;border-radius:var(--r);padding:44px 20px;text-align:center;color:var(--mut)}
+.empty svg{color:var(--ink3);opacity:.55;margin-bottom:10px}
+.empty b{display:block;color:var(--txt);font-size:18px;margin-bottom:4px;font-family:'Reem Kufi'}
+
+/* ---------- booking / admin ---------- */
+.two{display:grid;grid-template-columns:minmax(0,370px) minmax(0,1fr);gap:20px;align-items:start}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.card h2{font-size:21px;color:var(--ink);margin-bottom:12px}
+.f{margin-bottom:14px}
+.f>label{display:block;font-weight:700;font-size:13.5px;color:var(--mut);margin-bottom:6px}
+.f .fld{width:100%}
+.dsel{display:flex;gap:6px;flex-wrap:wrap}
+.dsel .dc{min-width:0;flex:1 1 44px;padding:8px 4px;font-weight:700;font-size:13.5px}
+.rec{display:grid;gap:8px}
+.rc{display:block;text-align:start;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#f6f8fc;width:100%}
+.rc b{display:block;font-size:14.5px}.rc small{color:var(--mut)}
+.rc.on{border-color:var(--ink);background:#fff;box-shadow:inset 0 0 0 1px var(--ink)}
+.sum{background:var(--ink);color:#fff;border-radius:12px;padding:12px 16px;font-weight:600;line-height:1.5}
+.sum small{display:block;color:var(--gold2);font-weight:500}
+.fgrp{margin-bottom:18px}
+.fgrp h3{font-size:18px;color:var(--ink);display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+.fgrp h3 small{font-family:'Cairo';font-size:13px;color:var(--mut);font-weight:600}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));gap:10px}
+.tile{text-align:start;padding:12px 14px;border-radius:12px;border:1.5px solid var(--freeLine);background:var(--freeBg);position:relative;min-height:70px}
+.tile b{display:flex;align-items:center;gap:7px;font-size:15.5px;line-height:1.3}
+.tile small{color:var(--mut);font-size:12.5px;display:block;margin-top:2px}
+.tile:hover:not(.x){border-color:var(--free)}
+.tile.sel{background:var(--free);border-color:var(--free);color:#fff}.tile.sel small{color:#d4f1e3}
+.tile.x{background:var(--busyBg);border-color:var(--busyLine);cursor:not-allowed}
+.tile.x small{color:var(--busy)}
+.tile .ok{position:absolute;top:10px;inset-inline-end:10px}
+.note{color:var(--mut);font-size:13.5px;padding:6px 2px}
+.list{display:grid;gap:10px}
+.bk{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;border-inline-start:6px solid var(--busy)}
+.bk.old{opacity:.6;border-inline-start-color:#9aa3b8}
+.bk.rq{border-inline-start-color:var(--gold)}
+.bk h3{font-size:18px;color:var(--ink);margin-bottom:3px}
+.bk .m{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--mut);font-size:13.5px;font-weight:500;align-items:center}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:1px 10px;border-radius:99px;background:#e5eafa;color:var(--ink3)}
+.tag.g{background:var(--freeBg);color:var(--free)}.tag.o{background:#eceef3;color:#69728a}.tag.u{background:var(--partBg);color:var(--part)}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.rl{display:flex;align-items:center;gap:10px;padding:10px 4px;border-bottom:1px solid var(--line)}
+.rl:last-child{border-bottom:0}.rl .n{flex:1;font-weight:600}.rl small{color:var(--mut);margin-inline-start:8px;font-weight:500}
+.frm{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;align-items:end}
+.frm .lb{font-size:13px;font-weight:700;color:var(--mut);display:block;margin-bottom:6px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.pl{padding:8px 18px;border-radius:99px;background:#fff;border:1px solid var(--line);font-weight:700;display:inline-flex;gap:8px;align-items:center}
+.pl:hover{border-color:var(--ink3)}
+.pl.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.sw{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-weight:600;cursor:pointer}
+.sw input{width:21px;height:21px;accent-color:var(--ink)}
+.set{max-width:720px}
+.set .sub{color:var(--mut);font-size:13.5px;margin:-4px 0 14px}
+.dz{border-color:var(--busyLine);background:#fffafa}
+
+/* ---------- login ---------- */
+.login{min-height:100vh;display:grid;place-items:center;padding:20px;background:
+  radial-gradient(900px 500px at 80% 0%,rgba(200,160,74,.22),transparent 60%),
+  linear-gradient(160deg,var(--ink),#0d1836 70%)}
+.lc{width:100%;max-width:420px;background:#fff;border-radius:22px;padding:34px 30px 28px;box-shadow:0 30px 70px -20px rgba(0,0,0,.6);text-align:center;position:relative}
+.lc .lg{position:absolute;top:14px;inset-inline-end:14px}
+.lc .lg button{font-size:13px;font-weight:700;padding:5px 12px;border-radius:99px;background:#eef2fa;color:var(--ink)}
+.lc h1{font-size:30px;color:var(--ink);margin:10px 0 2px}
+.lc .ch{color:var(--gold);font-weight:700;font-family:'Reem Kufi';font-size:18px}
+.lc p{color:var(--mut);margin:10px 0 20px;font-size:14px}
+.pwb{position:relative;margin-bottom:10px}
+.pwb input{width:100%;padding:13px 16px;border:1.5px solid var(--line);border-radius:12px;font-size:17px;text-align:center;letter-spacing:2px}
+.pwb input:focus{border-color:var(--ink3);outline:none;box-shadow:0 0 0 4px rgba(45,70,136,.14)}
+.pwb button{position:absolute;top:50%;transform:translateY(-50%);inset-inline-start:10px;color:var(--mut);padding:6px}
+.err{color:var(--busy);font-weight:600;font-size:13.5px;margin-bottom:10px;min-height:20px}
+.lc .btn{width:100%;padding:13px}
+.lc .btn small{font-weight:500;opacity:.8;margin-inline-start:4px}
+.or{display:flex;align-items:center;gap:12px;color:var(--mut);margin:16px 0;font-size:13px}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* ---------- modal & toast ---------- */
+.ov{position:fixed;inset:0;background:rgba(10,18,40,.55);display:grid;place-items:center;z-index:60;padding:16px}
+.dlg{background:#fff;border-radius:18px;padding:22px;width:100%;max-width:440px;box-shadow:0 30px 70px -20px rgba(0,0,0,.6);max-height:92vh;overflow:auto}
+.dlg h2{font-size:22px;color:var(--ink);margin-bottom:14px;line-height:1.4}
+.dlg .acts{margin-top:16px;justify-content:flex-start}
+#toast{position:fixed;bottom:22px;inset-inline:0;display:flex;justify-content:center;pointer-events:none;z-index:80}
+#toast div{background:var(--ink);color:#fff;padding:11px 22px;border-radius:99px;font-weight:600;box-shadow:0 12px 30px -8px rgba(0,0,0,.5);border:1px solid var(--gold);animation:tin .25s ease}
+@keyframes tin{from{transform:translateY(14px);opacity:0}}
+.load{padding:80px 20px;text-align:center;color:var(--mut);font-weight:600}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .scale{display:none}
+  .row{grid-template-columns:1fr auto;gap:10px 12px}
+  .row .tlc{grid-column:1/-1;order:3}
+  .row .acts{order:2}
+  .two{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .grid{grid-template-columns:1fr;padding:14px 12px 60px;gap:16px}
+  .side{position:static}
+  .tower{display:flex;flex-direction:row-reverse;overflow-x:auto;gap:6px;padding:10px;border-radius:14px}
+  .tower .roof,.tower .ground{display:none}
+  .fl{margin-top:0;flex:0 0 auto;width:auto;min-width:120px;padding:8px 10px}
+  .fl .dots{display:none}
+  .menu{display:flex;overflow-x:auto;gap:4px}.menu h3{display:none}
+  .mi{width:auto;flex:0 0 auto;white-space:nowrap}
+  .head h1{font-size:28px}
+  .brand small{display:none}
+  .top-in{padding:9px 12px;gap:8px}
+  .bk{grid-template-columns:1fr}
+  .fg{flex-direction:column;gap:4px}
+  .week{width:100%}.days{flex:1;flex-wrap:nowrap;overflow-x:auto}
+}
+</style>
+</head>
+<body>
+<div id="app"><div class="load">…</div></div>
+<div id="modal"></div>
+<div id="toast"></div>
+
+<script type="module">
+/* ==========================================================================
+   مبنى الخدمات — كنيسة جورجيوس
+   خطوات ربط Firebase مكتوبة بالتفصيل في الرد / ملف الشرح.
+   باختصار: الصق الـ config هنا، وفعّل Firestore + Authentication (Email/Password)،
+   وانسخ الـ Rules الموجودة بالأسفل في Firestore → Rules.
+
+   rules_version = '2';
+   service cloud.firestore {
+     match /databases/{database}/documents {
+       match /rooms/{id}     { allow read: if true; allow write: if request.auth != null; }
+       match /bookings/{id}  { allow read: if true; allow write: if request.auth != null; }
+       match /settings/{id}  { allow read: if true; allow write: if request.auth != null; }
+       match /requests/{id}  {
+         allow create: if request.resource.data.title is string && request.resource.data.title.size() <= 120
+                       && request.resource.data.name is string && request.resource.data.name.size() <= 80;
+         allow read, update, delete: if request.auth != null;
+       }
+     }
+   }
+   ========================================================================== */
+const CONFIG = {
+  ADMIN_EMAIL: 'admin@georgios.church',   // نفس الإيميل الذي ستنشئه في Authentication → Users
+  DEMO_PASSWORD: '1234',                  // للنسخة التجريبية فقط (قبل ربط Firebase)
+  firebase: {
+    apiKey: 'YOUR_API_KEY',
+    authDomain: 'YOUR_PROJECT.firebaseapp.com',
+    projectId: 'YOUR_PROJECT_ID',
+    appId: 'YOUR_APP_ID'
+  }
+};
+const FB = CONFIG.firebase.apiKey && !CONFIG.firebase.apiKey.startsWith('YOUR');
+
+/* ------------------------------ i18n ------------------------------ */
+const T = {
+ar:{
+  brand:'مبنى الخدمات',
+  fl1:'الدور الأول',fl2:'الدور الثاني',fl3:'الدور الثالث',fl4:'الدور الرابع',fl5:'الدور الخامس',fl6:'الدور السادس',fs5:'المشغل',fs6:'البرجولة',
+  loginT:'أهلاً بك', loginS:'ادخل كلمة السر للإدارة، أو ادخل كزائر لمعرفة الأماكن الفاضية وإرسال طلب حجز.', pw:'كلمة السر', enter:'دخول الإدارة', loginViewer:'دخول كزائر', loginViewerS:'عرض أو طلب حجز', or:'أو',
+  wrongPw:'كلمة السر غير صحيحة، حاول مرة أخرى.', netErr:'تعذر الاتصال أو الحفظ. تأكد من الإنترنت وإعدادات Firebase.', logout:'خروج', roleAdmin:'إدارة', roleView:'زائر (عرض / طلب حجز)',
+  demo:'نسخة تجريبية — المواعيد محفوظة على هذا الجهاز فقط. أضف إعدادات Firebase لتظهر لكل الناس.',
+  back:'رجوع', live:'مباشر', now:'الآن', today:'اليوم', allDay:'اليوم كله', day:'اليوم', time:'الوقت', pickDate:'تاريخ آخر', backNow:'العودة للوقت الحالي', prevW:'الأسبوع السابق', nextW:'الأسبوع التالي',
+  free:'فاضية', busy:'مشغولة', partial:'مشغولة جزئياً', freeAll:'فاضية طوال اليوم', busyAll:'مشغولة طوال اليوم', freeUntil:x=>`فاضية حتى ${x}`, freeRest:'فاضية بقية اليوم', all:'الكل',
+  hall:'صالة', room:'غرفة', cap:n=>`${n} فرد`,
+  freeT:'الأماكن الفاضية', freeHintA:'اضغط على المكان لحجزه', freeHintV:'اضغط على المكان لطلب حجزه', freeHintN:'اضغط على المكان لعرض دوره', noneFree:'لا توجد أماكن فاضية في هذا الوقت', untilS:x=>`حتى ${x}`, restS:'بقية اليوم', allS:'طوال اليوم',
+  noRooms:'لا توجد غرف في هذا الدور', noRooms5:'الدور الخامس مشغل ولا يوجد به غرف للاجتماعات.', noRooms6:'الدور السادس برجولة ولا يوجد به غرف للاجتماعات.',
+  noRoomsHint:'يمكنك إضافة غرفة أو صالة من صفحة «الغرف والصالات».', goRooms:'إضافة غرفة',
+  menu:'الإدارة', menuV:'الخدمات', nBook:'حجز موعد', nReq:'طلب حجز', nList:'كل الحجوزات', nRooms:'الغرف والصالات', nSet:'الإعدادات',
+  bookT:'حجز موعد جديد', reqT:'طلب حجز', when:'متى؟', startDate:'بداية من تاريخ', days:'الأيام', from:'الساعة', dur:'المدة', hr1:'ساعة',hr15:'ساعة ونصف',hr2:'ساعتان',hr3:'3 ساعات',hr4:'4 ساعات',min30:'نصف ساعة',
+  recT:'التكرار', recWeek:'هذا الأسبوع فقط', recWeekS:'حجز مؤقت — حتى يوم الجمعة', recMonth:'كل أسبوع لمدة شهر', recMonthS:'يتكرر أسبوعياً لمدة 30 يوماً', recCustom:'مخصص', recCustomS:'اختر من تاريخ إلى تاريخ', recForever:'دائم', recForeverS:'يتكرر كل أسبوع بلا نهاية', toDate:'إلى تاريخ',
+  freeRoomsT:'اختر مكاناً أو أكثر من الفاضي في هذا الموعد', ofN:(a,b)=>`${a} فاضية من ${b}`, occupiedBy:x=>`مشغولة: ${x}`, noRoomsShort:'لا توجد غرف', selN:n=>`تم اختيار ${n}`,
+  details:'بيانات الاجتماع', title:'اسم الاجتماع / الخدمة', titlePh:'مثال: اجتماع شباب الثانوي', notes:'ملاحظات (اختياري)', notesPh:'المسؤول، عدد الحاضرين…',
+  yourName:'اسمك', phone:'رقم التليفون (اختياري)',
+  save:'حفظ الحجز', sendReq:'إرسال الطلب للإدارة', pickRoomFirst:'اختر مكاناً واحداً على الأقل من القائمة', saved:'تم حفظ الحجز', need:'اكتب اسم الاجتماع', needDay:'اختر يوماً واحداً على الأقل', needYourName:'اكتب اسمك', conflict:'أحد الأماكن لم يعد فاضياً في هذا الموعد',
+  reqSent:'تم إرسال طلبك للإدارة وسيتم الرد عليك قريباً', reqOff:'استقبال طلبات الحجز متوقف حالياً.',
+  until:x=>`حتى ${x}`, range:(a,b)=>`من ${a} إلى ${b}`, forever:'مستمر بلا نهاية',
+  listT:'كل الحجوزات', search:'ابحث بالاسم…', allFloors:'كل الأدوار', active:'ساري', upcoming:'قادم', expired:'منتهي', clearOld:'حذف المنتهية',
+  noBookings:'لا توجد حجوزات', noBookingsS:'ابدأ بحجز أول موعد من «حجز موعد».', booksN:n=>`${n} حجز`, byL:'الطالب',
+  edit:'تعديل', del:'حذف', cancel:'إلغاء', add:'إضافة', sv:'حفظ', deleted:'تم الحذف', updated:'تم التحديث', keep:'تراجع',
+  confDelB:'حذف هذا الحجز؟', delThisDay:'حذف هذا اليوم فقط', delAll:'حذف الحجز كله', delRecQ:'هذا حجز متكرر. تحب تحذف إيه؟',
+  confDelR:'سيتم حذف المكان وإزالته من كل حجوزاته. متأكد؟',
+  roomsT:'الغرف والصالات', addRoomT:'إضافة غرفة أو صالة', floor:'الدور', type:'النوع', nameAr:'الاسم بالعربي', nameEn:'الاسم بالإنجليزي', capL:'السعة (اختياري)',
+  needName:'اكتب اسم الغرفة', roomAdded:'تمت إضافة الغرفة', seed:'إضافة غرف تجريبية', seedS:'ابدأ بغرف نموذجية يمكنك تعديلها وحذفها.',
+  editBook:'تعديل الحجز', editRoom:'تعديل الغرفة', editEnd:'تاريخ النهاية (اتركه فارغاً للحجز الدائم)', endBad:'تاريخ النهاية قبل تاريخ البداية',
+  /* requests */
+  sReq:'الطلبات', noReq:'لا توجد طلبات جديدة', approve:'قبول وحجز', reject:'رفض', approved:'تم قبول الطلب وإضافة الحجز', rejected:'تم رفض الطلب', newReq:'وصل طلب حجز جديد', confRej:'رفض هذا الطلب وحذفه؟', reqFrom:'من',
+  /* settings */
+  setT:'الإعدادات', sGen:'عام', sSec:'كلمة السر', sData:'البيانات',
+  genT:'إعدادات عامة', genS:'تتحكم في الاسم وساعات العمل وطريقة عمل البرنامج.', churchAr:'اسم الكنيسة بالعربي', churchEn:'اسم الكنيسة بالإنجليزي',
+  dayStartL:'بداية اليوم', dayEndL:'نهاية اليوم', stepL:'أقل فاصل للمواعيد', min15:'15 دقيقة', min60:'ساعة', tzL:'المنطقة الزمنية', tzCairo:'توقيت القاهرة (مُوصى به)', tzDev:'توقيت الجهاز',
+  allowReq:'السماح للزوار بإرسال طلبات حجز', autoClean:'حذف الحجوزات المنتهية تلقائياً (وتفضى الأوضة)', saveSet:'حفظ الإعدادات', setSaved:'تم حفظ الإعدادات', hoursBad:'نهاية اليوم لازم تكون بعد بدايته',
+  secT:'تغيير كلمة السر', secS:'كلمة سر الإدارة التي تدخل بها.', pwCur:'كلمة السر الحالية', pwNew:'كلمة السر الجديدة', pwNew2:'تأكيد كلمة السر الجديدة', pwChange:'تغيير كلمة السر',
+  pwChanged:'تم تغيير كلمة السر', pwMismatch:'كلمتا السر غير متطابقتين', pwShort:'كلمة السر لازم تكون 6 أحرف على الأقل', pwWrongCur:'كلمة السر الحالية غير صحيحة',
+  dataT:'البيانات', dataS:'نسخة احتياطية وتنظيف.', export:'تحميل نسخة احتياطية', clearOldNow:'حذف الحجوزات المنتهية الآن', wipe:'حذف كل الحجوزات', confWipe:'حذف كل الحجوزات نهائياً؟ لا يمكن التراجع.', confClear:'حذف كل الحجوزات المنتهية؟', dangerT:'منطقة الخطر'
+},
+en:{
+  brand:'Services Building',
+  fl1:'First Floor',fl2:'Second Floor',fl3:'Third Floor',fl4:'Fourth Floor',fl5:'Fifth Floor',fl6:'Sixth Floor',fs5:'Workshop',fs6:'Pergola',
+  loginT:'Welcome', loginS:'Enter the password for admin access, or continue as a visitor to see free places and send a booking request.', pw:'Password', enter:'Admin sign in', loginViewer:'Continue as visitor', loginViewerS:'view or request', or:'or',
+  wrongPw:'Wrong password. Please try again.', netErr:'Connection or save failed. Check your internet and Firebase settings.', logout:'Sign out', roleAdmin:'Admin', roleView:'Visitor (view / request)',
+  demo:'Demo mode — bookings are saved on this device only. Add your Firebase config to share them with everyone.',
+  back:'Back', live:'Live', now:'Now', today:'Today', allDay:'All day', day:'Day', time:'Time', pickDate:'Other date', backNow:'Back to current time', prevW:'Previous week', nextW:'Next week',
+  free:'Free', busy:'Busy', partial:'Partly busy', freeAll:'Free all day', busyAll:'Busy all day', freeUntil:x=>`Free until ${x}`, freeRest:'Free for the rest of the day', all:'All',
+  hall:'Hall', room:'Room', cap:n=>`${n} seats`,
+  freeT:'Free places', freeHintA:'Tap a place to book it', freeHintV:'Tap a place to request it', freeHintN:'Tap a place to see its floor', noneFree:'No free places at this time', untilS:x=>`until ${x}`, restS:'rest of day', allS:'all day',
+  noRooms:'No rooms on this floor', noRooms5:'The fifth floor is a workshop and has no meeting rooms.', noRooms6:'The sixth floor is an open pergola and has no meeting rooms.',
+  noRoomsHint:'You can add a room or hall from the “Rooms & halls” page.', goRooms:'Add a room',
+  menu:'Administration', menuV:'Services', nBook:'Book a slot', nReq:'Request a booking', nList:'All bookings', nRooms:'Rooms & halls', nSet:'Settings',
+  bookT:'New booking', reqT:'Booking request', when:'When?', startDate:'Starting on', days:'Days', from:'Start time', dur:'Duration', hr1:'1 hour',hr15:'1.5 hours',hr2:'2 hours',hr3:'3 hours',hr4:'4 hours',min30:'30 minutes',
+  recT:'Repeat', recWeek:'This week only', recWeekS:'One-time — until Friday', recMonth:'Weekly for a month', recMonthS:'Repeats every week for 30 days', recCustom:'Custom', recCustomS:'Pick a start and end date', recForever:'Permanent', recForeverS:'Repeats every week, no end date', toDate:'Until date',
+  freeRoomsT:'Pick one or more free places for this slot', ofN:(a,b)=>`${a} free of ${b}`, occupiedBy:x=>`Taken: ${x}`, noRoomsShort:'No rooms', selN:n=>`${n} selected`,
+  details:'Meeting details', title:'Meeting / service name', titlePh:'e.g. High school youth meeting', notes:'Notes (optional)', notesPh:'Leader, expected attendance…',
+  yourName:'Your name', phone:'Phone (optional)',
+  save:'Save booking', sendReq:'Send request to admin', pickRoomFirst:'Pick at least one place from the list', saved:'Booking saved', need:'Enter the meeting name', needDay:'Choose at least one day', needYourName:'Enter your name', conflict:'One of the places is no longer free at that time',
+  reqSent:'Your request was sent to the admin. You will hear back soon.', reqOff:'Booking requests are currently turned off.',
+  until:x=>`until ${x}`, range:(a,b)=>`${a} to ${b}`, forever:'no end date',
+  listT:'All bookings', search:'Search by name…', allFloors:'All floors', active:'Active', upcoming:'Upcoming', expired:'Ended', clearOld:'Delete ended',
+  noBookings:'No bookings yet', noBookingsS:'Start by booking the first slot from “Book a slot”.', booksN:n=>`${n} bookings`, byL:'Requested by',
+  edit:'Edit', del:'Delete', cancel:'Cancel', add:'Add', sv:'Save', deleted:'Deleted', updated:'Updated', keep:'Keep it',
+  confDelB:'Delete this booking?', delThisDay:'Delete this day only', delAll:'Delete the whole booking', delRecQ:'This is a recurring booking. What would you like to delete?',
+  confDelR:'This deletes the place and removes it from all its bookings. Continue?',
+  roomsT:'Rooms & halls', addRoomT:'Add a room or hall', floor:'Floor', type:'Type', nameAr:'Name (Arabic)', nameEn:'Name (English)', capL:'Capacity (optional)',
+  needName:'Enter a room name', roomAdded:'Room added', seed:'Add sample rooms', seedS:'Start with sample rooms you can edit or delete.',
+  editBook:'Edit booking', editRoom:'Edit room', editEnd:'End date (leave empty for permanent)', endBad:'End date is before the start date',
+  sReq:'Requests', noReq:'No new requests', approve:'Approve & book', reject:'Reject', approved:'Request approved and booking added', rejected:'Request rejected', newReq:'New booking request received', confRej:'Reject and delete this request?', reqFrom:'From',
+  setT:'Settings', sGen:'General', sSec:'Password', sData:'Data',
+  genT:'General settings', genS:'Name, working hours and how the app behaves.', churchAr:'Church name (Arabic)', churchEn:'Church name (English)',
+  dayStartL:'Day starts at', dayEndL:'Day ends at', stepL:'Smallest time step', min15:'15 minutes', min60:'1 hour', tzL:'Time zone', tzCairo:'Cairo time (recommended)', tzDev:'Device time',
+  allowReq:'Let visitors send booking requests', autoClean:'Automatically delete ended bookings (frees the room)', saveSet:'Save settings', setSaved:'Settings saved', hoursBad:'The day must end after it starts',
+  secT:'Change password', secS:'The admin password you sign in with.', pwCur:'Current password', pwNew:'New password', pwNew2:'Confirm new password', pwChange:'Change password',
+  pwChanged:'Password changed', pwMismatch:'The two passwords do not match', pwShort:'Password must be at least 6 characters', pwWrongCur:'Current password is incorrect',
+  dataT:'Data', dataS:'Backup and cleanup.', export:'Download a backup', clearOldNow:'Delete ended bookings now', wipe:'Delete all bookings', confWipe:'Delete ALL bookings permanently? This cannot be undone.', confClear:'Delete all ended bookings?', dangerT:'Danger zone'
+}};
+
+/* ------------------------------ settings & time ------------------------------ */
+const DEFAULTS={churchAr:'كنيسة جورجيوس',churchEn:'Georgios Church',dayStart:7,dayEnd:24,step:30,autoClean:true,allowRequests:true,tz:'Africa/Cairo'};
+let ST={...DEFAULTS};
+let DAY_START=420, DAY_END=1440, SPAN=1020;
+function applySettings(){
+  ST.dayStart=+ST.dayStart;ST.dayEnd=+ST.dayEnd;ST.step=+ST.step||30;
+  DAY_START=ST.dayStart*60; DAY_END=ST.dayEnd*60; if(DAY_END<=DAY_START)DAY_END=DAY_START+60;
+  SPAN=DAY_END-DAY_START;
+}
+const pad=n=>String(n).padStart(2,'0');
+const isoD=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const parseD=s=>{const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d,12)};
+const addDays=(s,n)=>{const d=parseD(s);d.setDate(d.getDate()+n);return isoD(d)};
+const dow=s=>parseD(s).getDay();
+function nowParts(){
+  const dev=()=>{const d=new Date();return {date:isoD(d),min:d.getHours()*60+d.getMinutes()}};
+  if(ST.tz==='device')return dev();
+  try{
+    const f=new Intl.DateTimeFormat('en-CA',{timeZone:ST.tz,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'});
+    const p={};f.formatToParts(new Date()).forEach(x=>p[x.type]=x.value);
+    return {date:`${p.year}-${p.month}-${p.day}`,min:(+p.hour%24)*60+(+p.minute)};
+  }catch(e){return dev()}
+}
+const today=()=>nowParts().date;
+const nowMin=()=>nowParts().min;
+const weekStart=d=>addDays(d,-((dow(d)+1)%7));       // الأسبوع يبدأ السبت
+const weekEnd=d=>addDays(d,(5-dow(d)+7)%7);          // وينتهي الجمعة
+const DOW_ORDER=[6,0,1,2,3,4,5];
+const uid=()=>Math.random().toString(36).slice(2,10)+Date.now().toString(36).slice(-3);
+
+const S={lang:localStorage.getItem('g_lang')||'ar',role:null,tab:'f1',sub:'req',hist:[],date:today(),time:'now',filter:'all',
+  book:null,bq:{floor:'all',q:''},rf:{floor:1,type:'room',ar:'',en:'',cap:''},err:'',ready:false,modal:null,lastReq:null,lastMin:-1};
+const DATA={rooms:[],bookings:[],requests:[],loaded:false};
+const t=(k,...a)=>{const v=T[S.lang][k]??T.ar[k]??k;return typeof v==='function'?v(...a):v};
+const churchName=()=>S.lang==='ar'?ST.churchAr:ST.churchEn;
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmtT=m=>{const h=Math.floor(m/60)%24,mi=m%60,pm=h>=12,h12=h%12||12;
+  const suf=S.lang==='ar'?(pm?'م':'ص'):(pm?'PM':'AM');return `${h12}:${pad(mi)} ${suf}`};
+const hourLbl=m=>{const h=Math.floor(m/60)%24,pm=h>=12,h12=h%12||12;return h12+(S.lang==='ar'?(pm?' م':' ص'):(pm?'p':'a'))};
+const loc=()=>S.lang==='ar'?'ar-EG-u-nu-latn':'en-GB';
+const fmtD=(s,o)=>new Intl.DateTimeFormat(loc(),o).format(parseD(s));
+const dayName=(n,long)=>new Intl.DateTimeFormat(loc(),{weekday:long?'long':'short'}).format(new Date(2024,0,7+n,12));
+const floorName=n=>t('fl'+n)+(n>=5?` (${t('fs'+n)})`:'');
+const roomName=r=>(S.lang==='ar'?(r.nameAr||r.nameEn):(r.nameEn||r.nameAr))||'—';
+const roomSub=r=>(r.type==='hall'?t('hall'):t('room'))+(r.cap?` · ${t('cap',r.cap)}`:'');
+const byName=(a,b)=>(a.type===b.type?0:a.type==='hall'?-1:1)||roomName(a).localeCompare(roomName(b),loc(),{numeric:true});
+const toast=m=>{const el=$('#toast');el.innerHTML=`<div>${esc(m)}</div>`;clearTimeout(toast.h);toast.h=setTimeout(()=>el.innerHTML='',2800)};
+const canReq=()=>S.role==='admin'||(S.role==='viewer'&&ST.allowRequests);
+const roomById=id=>DATA.rooms.find(r=>r.id===id);
+
+const I={
+ cross:'<svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="none" stroke="#c8a04a" stroke-width="2"/><path d="M20 7v26M10 17h20" stroke="#e9d29b" stroke-width="4" stroke-linecap="round"/></svg>',
+ door:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v17M3 21h18"/><circle cx="15" cy="12.5" r=".8" fill="currentColor"/></svg>',
+ hall:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 12 4l9 6M5 10v10h14V10M9 20v-6h6v6"/></svg>',
+ plus:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
+ list:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg>',
+ build:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6M3 21h18"/></svg>',
+ gear:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>',
+ bell:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg>',
+ edit:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
+ trash:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg>',
+ eye:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>',
+ check:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>',
+ chev:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>',
+ roof:'<svg class="roof" viewBox="0 0 244 64"><path d="M0 62 122 20 244 62Z" fill="#1f336b"/><path d="M122 2v22M113 10h18" stroke="#c8a04a" stroke-width="3.5" stroke-linecap="round"/></svg>'
+};
+const sm=(ic)=>ic.replace(/width="19" height="19"/,'width="15" height="15"');
+
+/* ------------------------------ booking logic ------------------------------ */
+// booking: {id, roomIds:[], title, notes, by, days:[0-6], start, end (min), allDay, startDate, endDate|null, rec, exceptions:[iso]}
+const norm=b=>({...b,roomIds:b.roomIds||(b.roomId?[b.roomId]:[]),exceptions:b.exceptions||[],days:b.days||[]});
+const occursOn=(b,d)=>d>=b.startDate&&(!b.endDate||d<=b.endDate)&&b.days.includes(dow(d))&&!b.exceptions.includes(d);
+function conflicts(a,b){
+  if(!(a.start<b.end&&b.start<a.end))return false;
+  const shared=a.days.filter(x=>b.days.includes(x)); if(!shared.length)return false;
+  const lo=a.startDate>b.startDate?a.startDate:b.startDate;
+  const ea=a.endDate||'9999-12-31', eb=b.endDate||'9999-12-31', hi=ea<eb?ea:eb;
+  if(lo>hi)return false;
+  for(let i=0;i<7;i++){const d=addDays(lo,i); if(d>hi)break; if(shared.includes(dow(d)))return true}
+  return false;
+}
+const dayBookings=(roomId,d)=>DATA.bookings.filter(b=>b.roomIds.includes(roomId)&&occursOn(b,d)).sort((a,b)=>a.start-b.start);
+function coversDay(bs){let c=DAY_START;for(const b of bs){if(b.start<=c)c=Math.max(c,b.end)}return c>=DAY_END}
+const curT=()=>S.time==='now'?nowMin():S.time;
+function roomState(r){
+  const bs=dayBookings(r.id,S.date);
+  if(S.time==='all'){
+    const full=bs.some(b=>b.allDay)||coversDay(bs);
+    return {st:bs.length?(full?'busy':'partial'):'free',bs,cur:null,next:null};
+  }
+  const tt=curT();
+  const cur=bs.find(b=>tt>=b.start&&tt<b.end)||null, next=bs.find(b=>b.start>tt)||null;
+  return {st:cur?'busy':'free',bs,cur,next};
+}
+const recText=b=>({forever:t('recForever'),month:t('recMonth'),custom:t('recCustom'),week:t('recWeek')}[b.rec]||t('recWeek'));
+function occCount(b){ if(!b.endDate)return 99; let n=0; for(let d=b.startDate;d<=b.endDate&&n<3;d=addDays(d,1))if(occursOn(b,d))n++; return n}
+
+/* ------------------------------ data layer ------------------------------ */
+function seedRooms(){
+  const R=[];
+  const add=(floor,type,ar,en,cap)=>R.push({floor,type,nameAr:ar,nameEn:en,cap});
+  add(1,'hall','الصالة الكبرى','Main Hall',150);add(1,'room','غرفة 101','Room 101',25);add(1,'room','غرفة 102','Room 102',25);
+  add(2,'hall','صالة الدور الثاني','Second Floor Hall',80);add(2,'room','غرفة 201','Room 201',20);add(2,'room','غرفة 202','Room 202',20);
+  add(3,'room','غرفة 301','Room 301',20);add(3,'room','غرفة 302','Room 302',20);add(3,'room','غرفة 303','Room 303',15);
+  add(4,'hall','صالة الدور الرابع','Fourth Floor Hall',60);add(4,'room','غرفة 401','Room 401',20);add(4,'room','غرفة 402','Room 402',15);
+  return R;
+}
+const setST=p=>{ST={...DEFAULTS,...(p||{})};applySettings();if(S.time==='now')S.date=today()};
+function afterRequests(){
+  if(S.role==='admin'&&S.lastReq!==null&&DATA.requests.length>S.lastReq)toast(t('newReq'));
+  S.lastReq=DATA.requests.length;
+}
+let backend;
+function demoBackend(){
+  const KEY='georgios_rooms_demo_v2';
+  let d=null; try{d=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){}
+  if(!d){
+    d={rooms:seedRooms().map(r=>({...r,id:uid()})),bookings:[],requests:[],settings:{}};
+    const t0=today(), rid=(f,i)=>d.rooms.filter(r=>r.floor===f)[i].id;
+    const mk=(room,title,days,s,e,rec='forever',endDate=null)=>d.bookings.push({id:uid(),roomIds:[room],title,notes:'',days,start:s,end:e,allDay:false,startDate:t0,endDate,rec,exceptions:[]});
+    mk(rid(1,0),'القداس الإلهي / Divine Liturgy',[5],8*60,10*60);
+    mk(rid(1,0),'اجتماع الشباب / Youth meeting',[5,0],17*60,19*60);
+    mk(rid(1,1),'مدارس الأحد / Sunday School',[5],9*60,11*60);
+    mk(rid(2,1),'اجتماع الخدام / Servants meeting',[2,4],19*60,21*60);
+    mk(rid(3,0),'الكورال / Choir',[1,3],18*60,20*60);
+    mk(rid(4,0),'كشافة / Scouts',[6],10*60,13*60);
+    const s0=Math.max(8*60,Math.floor(nowMin()/30)*30); mk(rid(2,0),'اجتماع الأسرة / Family meeting',[0,1,2,3,4,5,6],s0,Math.min(s0+90,1440),'week',weekEnd(t0));
+  }
+  const demoPw=()=>localStorage.getItem('g_demo_pw')||CONFIG.DEMO_PASSWORD;
+  const save=()=>{
+    localStorage.setItem(KEY,JSON.stringify(d));
+    setST(d.settings); DATA.rooms=[...d.rooms]; DATA.bookings=d.bookings.map(norm); DATA.requests=[...d.requests]; DATA.loaded=true;
+    afterRequests(); render();
+  };
+  return {
+    async init(){const r=sessionStorage.getItem('g_role');S.role=(r==='admin'||r==='viewer')?r:null;S.ready=true;save()},
+    async login(pw){if(pw!==demoPw())throw new Error('bad');S.role='admin';sessionStorage.setItem('g_role','admin')},
+    async logout(){},
+    async changePassword(cur,nw){if(cur!==demoPw()){const e=new Error('x');e.code='wrong';throw e}localStorage.setItem('g_demo_pw',nw)},
+    async saveSettings(p){d.settings={...d.settings,...p};save()},
+    async addRoom(r){d.rooms.push({...r,id:uid()});save()},
+    async updateRoom(id,p){Object.assign(d.rooms.find(x=>x.id===id),p);save()},
+    async deleteRoom(id){
+      d.rooms=d.rooms.filter(x=>x.id!==id);
+      d.bookings.forEach(b=>{if(b.roomIds)b.roomIds=b.roomIds.filter(x=>x!==id)});
+      d.bookings=d.bookings.filter(b=>b.roomIds&&b.roomIds.length);save();
+    },
+    async addBooking(b){d.bookings.push({...b,id:uid()});save()},
+    async updateBooking(id,p){Object.assign(d.bookings.find(x=>x.id===id),p);save()},
+    async deleteBooking(id){d.bookings=d.bookings.filter(x=>x.id!==id);save()},
+    async wipeBookings(){d.bookings=[];save()},
+    async addRequest(r){d.requests.push({...r,id:uid()});save()},
+    async deleteRequest(id){d.requests=d.requests.filter(x=>x.id!==id);save()},
+    async seed(){seedRooms().forEach(r=>d.rooms.push({...r,id:uid()}));save()}
+  };
+}
+async function firebaseBackend(){
+  const V='10.12.2', base=`https://www.gstatic.com/firebasejs/${V}/`;
+  const [A_,F,H]=await Promise.all([import(base+'firebase-app.js'),import(base+'firebase-firestore.js'),import(base+'firebase-auth.js')]);
+  const app=A_.initializeApp(CONFIG.firebase), db=F.getFirestore(app), auth=H.getAuth(app);
+  let gotR=false,gotB=false,unsubReq=null;
+  const check=()=>{if(gotR&&gotB)DATA.loaded=true;render()};
+  const onErr=e=>{console.error(e);toast(t('netErr'))};
+  F.onSnapshot(F.collection(db,'rooms'),s=>{DATA.rooms=s.docs.map(x=>({id:x.id,...x.data()}));gotR=true;check()},onErr);
+  F.onSnapshot(F.collection(db,'bookings'),s=>{DATA.bookings=s.docs.map(x=>norm({id:x.id,...x.data()}));gotB=true;check()},onErr);
+  F.onSnapshot(F.doc(db,'settings','main'),s=>{setST(s.exists()?s.data():{});render()},()=>{});
+  H.onAuthStateChanged(auth,u=>{
+    if(u){
+      S.role='admin';
+      if(!unsubReq)unsubReq=F.onSnapshot(F.collection(db,'requests'),s=>{DATA.requests=s.docs.map(x=>({id:x.id,...x.data()})).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0));afterRequests();render()},()=>{});
+    }else{
+      if(unsubReq){unsubReq();unsubReq=null}DATA.requests=[];S.lastReq=null;
+      S.role=sessionStorage.getItem('g_role')==='viewer'?'viewer':null;
+    }
+    S.ready=true;render();
+  });
+  return {
+    async init(){},
+    async login(pw){await H.signInWithEmailAndPassword(auth,CONFIG.ADMIN_EMAIL,pw)},
+    async logout(){await H.signOut(auth)},
+    async changePassword(cur,nw){
+      const u=auth.currentUser;
+      await H.reauthenticateWithCredential(u,H.EmailAuthProvider.credential(u.email,cur));
+      await H.updatePassword(u,nw);
+    },
+    async saveSettings(p){await F.setDoc(F.doc(db,'settings','main'),p,{merge:true})},
+    async addRoom(r){await F.addDoc(F.collection(db,'rooms'),r)},
+    async updateRoom(id,p){await F.updateDoc(F.doc(db,'rooms',id),p)},
+    async deleteRoom(id){
+      await Promise.all(DATA.bookings.filter(b=>b.roomIds.includes(id)).map(b=>{
+        const left=b.roomIds.filter(x=>x!==id);
+        return left.length?F.updateDoc(F.doc(db,'bookings',b.id),{roomIds:left}):F.deleteDoc(F.doc(db,'bookings',b.id));
+      }));
+      await F.deleteDoc(F.doc(db,'rooms',id));
+    },
+    async addBooking(b){await F.addDoc(F.collection(db,'bookings'),b)},
+    async updateBooking(id,p){await F.updateDoc(F.doc(db,'bookings',id),p)},
+    async deleteBooking(id){await F.deleteDoc(F.doc(db,'bookings',id))},
+    async wipeBookings(){await Promise.all(DATA.bookings.map(b=>F.deleteDoc(F.doc(db,'bookings',b.id))))},
+    async addRequest(r){await F.addDoc(F.collection(db,'requests'),r)},
+    async deleteRequest(id){await F.deleteDoc(F.doc(db,'requests',id))},
+    async seed(){await Promise.all(seedRooms().map(r=>F.addDoc(F.collection(db,'rooms'),r)))}
+  };
+}
+let cleaning=false;
+async function autoClean(){
+  if(cleaning||S.role!=='admin'||!ST.autoClean||!DATA.loaded)return;
+  const td=today(), old=DATA.bookings.filter(b=>b.endDate&&b.endDate<td);
+  if(!old.length)return;
+  cleaning=true;
+  try{for(const b of old)await backend.deleteBooking(b.id)}catch(e){console.error(e)}
+  cleaning=false;
+}
+
+/* ------------------------------ views ------------------------------ */
+const endDateFor=B=>B.rec==='week'?weekEnd(B.date):B.rec==='month'?addDays(B.date,29):B.rec==='custom'?(B.date2<B.date?B.date:B.date2):null;
+function fixDays(B){
+  if(B.rec==='week'){const ws=weekStart(B.date);B.days=B.days.filter(d=>addDays(ws,DOW_ORDER.indexOf(d))>=B.date)}
+  if(!B.days.length)B.days=[dow(B.date)];
+}
+function newBook(){
+  const d=today(); const m=Math.floor(nowMin()/ST.step)*ST.step+ST.step;
+  return {date:d,date2:addDays(d,13),days:[dow(d)],start:clampStart(m),dur:60,allDay:false,rec:'week',rooms:[],title:'',notes:'',name:'',phone:''};
+}
+const clampStart=m=>Math.min(Math.max(m,DAY_START),DAY_END-ST.step);
+const timeOpts=(sel,extra)=>{
+  let h='';
+  if(extra)h+=`<option value="now" ${sel==='now'?'selected':''}>${t('now')}</option><option value="all" ${sel==='all'?'selected':''}>${t('allDay')}</option>`;
+  for(let m=DAY_START;m<=DAY_END-ST.step;m+=ST.step)h+=`<option value="${m}" ${sel===m?'selected':''}>${fmtT(m)}</option>`;
+  return h;
+};
+const backBtn=()=>S.hist.length?`<button class="backb" data-act="back">${I.chev}${t('back')}</button>`:'';
+const hd=(title,sub='')=>`<div class="head">${backBtn()}<div><h1>${title}</h1>${sub?`<p>${sub}</p>`:''}</div></div>`;
+
+function login(){
+  return `<div class="login"><div class="lc">
+    <div class="lg"><button data-act="lang">${S.lang==='ar'?'English':'العربية'}</button></div>
+    <div style="display:grid;place-items:center">${I.cross.replace('width="34" height="34"','width="62" height="62"')}</div>
+    <h1>${t('brand')}</h1><div class="ch">${esc(churchName())}</div>
+    <p>${t('loginS')}</p>
+    <div class="pwb"><input id="pw" type="password" autocomplete="current-password" placeholder="${t('pw')}" autofocus>
+      <button data-act="togglePw" aria-label="show">${I.eye}</button></div>
+    <div class="err">${esc(S.err)}</div>
+    <button class="btn" data-act="login">${t('enter')}</button>
+    <div class="or">${t('or')}</div>
+    <button class="btn ghost" data-act="viewer">${I.eye} ${t('loginViewer')} <small>(${t('loginViewerS')})</small></button>
+  </div></div>`;
+}
+const clockText=()=>`${dayName(dow(today()),true)} ${fmtT(nowMin())}`;
+function topbar(){
+  const nr=DATA.requests.length;
+  return `${FB?'':`<div class="demo">${t('demo')}</div>`}
+  <header class="top"><div class="top-in">
+    <div class="brand">${I.cross}<div><b>${t('brand')}</b><small>${esc(churchName())}</small></div></div>
+    <div class="sp"></div>
+    <div class="clock"><span class="pulse"></span><span id="clk">${esc(clockText())}</span></div>
+    <span class="role ${S.role==='admin'?'':'v'}">${S.role==='admin'?t('roleAdmin'):t('roleView')}</span>
+    ${S.role==='admin'?`<button class="tbtn" data-act="goReq" title="${t('sReq')}">${I.bell}${nr?`<span class="nb">${nr}</span>`:''}</button>`:''}
+    <button class="tbtn" data-act="lang">${S.lang==='ar'?'EN':'ع'}</button>
+    <button class="tbtn" data-act="logout">${t('logout')}</button>
+  </div></header>`;
+}
+function side(){
+  let tower=I.roof;
+  for(let n=6;n>=1;n--){
+    const rooms=DATA.rooms.filter(r=>r.floor===n).sort(byName);
+    const dots=rooms.map(r=>{const s=roomState(r).st;return `<i class="${s==='busy'?'b':s==='partial'?'p':''}"></i>`}).join('');
+    tower+=`<button class="fl ${S.tab==='f'+n?'on':''} ${n===6?'pg':''}" data-act="tab" data-v="f${n}">
+      <span class="no">${n}</span><span class="nm">${t('fl'+n)}${n>=5?`<small>${t('fs'+n)}</small>`:''}</span><span class="dots">${dots}</span></button>`;
+  }
+  tower+='<div class="ground"></div>';
+  const mi=(id,ic,lb,badge)=>`<button class="mi ${S.tab===id?'on':''}" data-act="tab" data-v="${id}">${ic}${lb}${badge?`<span class="nb">${badge}</span>`:''}</button>`;
+  let menu='';
+  if(S.role==='admin')menu=`<nav class="menu"><h3>${t('menu')}</h3>${mi('book',I.plus,t('nBook'))}${mi('bookings',I.list,t('nList'))}${mi('rooms',I.build,t('nRooms'))}${mi('settings',I.gear,t('nSet'),DATA.requests.length)}</nav>`;
+  else if(ST.allowRequests)menu=`<nav class="menu"><h3>${t('menuV')}</h3>${mi('book',I.plus,t('nReq'))}</nav>`;
+  return `<aside class="side"><nav class="tower">${tower}</nav>${menu}</aside>`;
+}
+
+function freePanel(){
+  const groups=[]; let total=0;
+  for(let n=1;n<=6;n++){
+    const fr=DATA.rooms.filter(r=>r.floor===n).sort(byName).map(r=>({r,s:roomState(r)})).filter(x=>x.s.st==='free');
+    if(fr.length){groups.push([n,fr]);total+=fr.length}
+  }
+  const hint=S.role==='admin'?t('freeHintA'):canReq()?t('freeHintV'):t('freeHintN');
+  let h=`<section class="fpanel"><h2>${t('freeT')} <b>${total}</b></h2><div class="hint">${total?hint:t('noneFree')}</div>`;
+  for(const [n,fr] of groups){
+    h+=`<div class="fg"><div class="fn">${t('fl'+n)}${n>=5?` (${t('fs'+n)})`:''}</div><div class="fcs">`+fr.map(({r,s})=>{
+      const tail=S.time==='all'?t('allS'):(s.next?t('untilS',fmtT(s.next.start)):t('restS'));
+      return `<button class="fc" data-act="freeGo" data-id="${r.id}" data-f="${n}">${r.type==='hall'?sm(I.hall):sm(I.door)}${esc(roomName(r))}<small>${tail}</small></button>`}).join('')+'</div></div>';
+  }
+  return h+'</section>';
+}
+
+function floorView(n){
+  if(!DATA.loaded)return `<div class="load">…</div>`;
+  const rooms=DATA.rooms.filter(r=>r.floor===n).sort(byName);
+  const items=rooms.map(r=>({r,s:roomState(r)}));
+  const nf=items.filter(x=>x.s.st==='free').length, nb=items.length-nf;
+  const live=S.date===today()&&S.time==='now';
+  const when=fmtD(S.date,{weekday:'long',day:'numeric',month:'long'})+' · '+(S.time==='all'?t('allDay'):fmtT(curT()));
+  let h=`<div class="head">${backBtn()}<div><h1>${t('fl'+n)}${n>=5?` <em>— ${t('fs'+n)}</em>`:''}</h1>
+    <p>${live?`<span class="tag g">${t('live')}</span> `:''}${esc(when)}</p></div><div style="flex:1"></div>
+    ${live?'':`<button class="btn gold sm" data-act="now">${t('backNow')}</button>`}</div>`;
+  h+=freePanel();
+  const ws=weekStart(S.date), we=addDays(ws,6), td=today();
+  let chips='';
+  for(let i=0;i<7;i++){const d=addDays(ws,i);
+    chips+=`<button class="dc ${S.date===d?'on':''} ${d===td?'td':''}" data-act="date" data-v="${d}"><small>${d===td?t('today'):dayName(dow(d))}</small><b>${parseD(d).getDate()}</b></button>`}
+  h+=`<div class="ctrl"><div><label class="l">${t('day')}</label>
+      <div class="week"><button class="wn" data-act="weekNav" data-v="-7" title="${t('prevW')}">${I.chev}</button><div class="days">${chips}</div><button class="wn" data-act="weekNav" data-v="7" title="${t('nextW')}" style="transform:scaleX(-1)">${I.chev}</button></div>
+      <div class="wl">${fmtD(ws,{day:'numeric',month:'long'})} – ${fmtD(we,{day:'numeric',month:'long'})}</div></div>
+    <div><label class="l">${t('pickDate')}</label><input class="fld" type="date" value="${S.date}" data-ch="date"></div>
+    <div><label class="l">${t('time')}</label><select class="fld" data-ch="time">${timeOpts(S.time,true)}</select></div></div>`;
+  if(!rooms.length){
+    const note=n===5?t('noRooms5'):n===6?t('noRooms6'):t('noRooms');
+    return h+`<div class="empty">${I.build.replace('width="20" height="20"','width="46" height="46"')}<b>${note}</b>
+      ${S.role==='admin'?`<div>${t('noRoomsHint')}</div><div style="margin-top:14px"><button class="btn" data-act="tab" data-v="rooms">${I.plus}${t('goRooms')}</button></div>`:''}</div>`;
+  }
+  h+=`<div class="stats">
+    <button class="st ${S.filter==='all'?'on':''}" data-act="filter" data-v="all"><i></i>${t('all')} <b>${items.length}</b></button>
+    <button class="st f ${S.filter==='free'?'on':''}" data-act="filter" data-v="free"><i></i>${t('free')} <b>${nf}</b></button>
+    <button class="st b ${S.filter==='busy'?'on':''}" data-act="filter" data-v="busy"><i></i>${t('busy')} <b>${nb}</b></button></div>`;
+  const shown=items.filter(x=>S.filter==='all'||(S.filter==='free'?x.s.st==='free':x.s.st!=='free'));
+  let sc=''; for(let m=DAY_START+60;m<=DAY_END;m+=120)sc+=`<span style="inset-inline-start:${(m-DAY_START)/SPAN*100}%">${hourLbl(m)}</span>`;
+  h+=`<div class="board"><div class="scale"><span></span><span></span><div class="tlh">${sc}</div><span></span></div>`;
+  for(const {r,s} of shown){
+    let chip,det='';
+    if(S.time==='all'){
+      chip=s.st==='free'?t('freeAll'):s.st==='busy'?t('busyAll'):t('partial');
+      det=s.bs.map(b=>`<b>${esc(b.title)}</b> ${b.allDay?t('allDay'):fmtT(b.start)+' – '+fmtT(b.end)}`).join('<br>');
+    }else if(s.st==='busy'){
+      chip=t('busy'); det=`<b>${esc(s.cur.title)}</b><br>${s.cur.allDay?t('allDay'):fmtT(s.cur.start)+' – '+fmtT(s.cur.end)}`;
+    }else{
+      chip=t('free'); det=s.next?t('freeUntil',fmtT(s.next.start)):t('freeRest');
+    }
+    const span=s.bs.map(b=>{
+      const a=Math.max(b.start,DAY_START),e=Math.min(b.end,DAY_END); if(e<=a)return '';
+      return `<i class="${b.allDay?'ad':''}" style="inset-inline-start:${(a-DAY_START)/SPAN*100}%;width:${(e-a)/SPAN*100}%" title="${esc(b.title)}">${esc(b.title)}</i>`}).join('');
+    const tt=curT(); const mk=S.time!=='all'&&tt>=DAY_START&&tt<=DAY_END?`<span class="mk" style="inset-inline-start:${(tt-DAY_START)/SPAN*100}%"></span>`:'';
+    let acts='<div></div>';
+    if(S.role==='admin')acts=`<div class="acts">
+      ${s.cur?`<button class="ic" title="${t('edit')}" data-act="editBooking" data-id="${s.cur.id}" data-date="${S.date}">${I.edit}</button><button class="ic del" title="${t('del')}" data-act="delBooking" data-id="${s.cur.id}" data-date="${S.date}">${I.trash}</button>`:''}
+      <button class="btn sm gold" data-act="bookRoom" data-id="${r.id}">${I.plus}${t('nBook')}</button></div>`;
+    else if(canReq()&&s.st!=='busy')acts=`<div class="acts"><button class="btn sm gold" data-act="bookRoom" data-id="${r.id}">${I.plus}${t('nReq')}</button></div>`;
+    h+=`<div class="row ${s.st}"><div><span class="chip">${chip}</span></div>
+      <div><div class="rn">${r.type==='hall'?I.hall:I.door}${esc(roomName(r))}</div><div class="rs">${esc(roomSub(r))}</div><div class="det">${det}</div></div>
+      <div class="tlc"><div class="tl" style="--hrs:${SPAN/60}">${span}${mk}</div></div>${acts}</div>`;
+  }
+  return h+'</div>';
+}
+
+function bookView(){
+  const isReq=S.role!=='admin';
+  if(isReq&&!ST.allowRequests)return `${hd(t('reqT'))}<div class="empty"><b>${t('reqOff')}</b></div>`;
+  if(!S.book)S.book=newBook();
+  const B=S.book;
+  const end=endDateFor(B);
+  const c={days:[...B.days],start:B.allDay?0:B.start,end:B.allDay?1440:Math.min(B.start+B.dur,1440),allDay:B.allDay,startDate:B.date,endDate:end,rec:B.rec};
+  const durs=[[30,'min30'],[60,'hr1'],[90,'hr15'],[120,'hr2'],[180,'hr3'],[240,'hr4']];
+  const ws=weekStart(B.date);
+  let dsel=''; DOW_ORDER.forEach((d,i)=>{
+    const dd=addDays(ws,i), dis=B.rec==='week'&&dd<B.date;
+    dsel+=`<button class="dc ${B.days.includes(d)?'on':''}" ${dis?'disabled':''} data-act="toggleDay" data-v="${d}">${dayName(d)}${B.rec==='week'?`<small>${parseD(dd).getDate()}</small>`:''}</button>`});
+  const rc=(k,a,b)=>`<button class="rc ${B.rec===k?'on':''}" data-act="setRec" data-v="${k}"><b>${t(a)}</b><small>${t(b)}</small></button>`;
+  const sd=fmtD(c.startDate,{day:'numeric',month:'short'});
+  const rangeTxt=end?t('range',sd,fmtD(end,{day:'numeric',month:'short'})):`${sd} → ${t('forever')}`;
+  const timeTxt=B.allDay?t('allDay'):`${fmtT(c.start)} – ${fmtT(c.end)}`;
+  const sep=S.lang==='ar'?'، ':', ';
+  const form=`<div class="card"><h2>${t('when')}</h2>
+    <div class="f"><label>${t('startDate')}</label><input class="fld" type="date" value="${B.date}" data-ch="bdate"></div>
+    <div class="f"><label>${t('days')}</label><div class="dsel">${dsel}</div></div>
+    <div class="f"><label>${t('from')}</label><select class="fld" data-ch="bstart" ${B.allDay?'disabled':''}>${timeOpts(B.start,false)}</select></div>
+    <div class="f"><label>${t('dur')}</label><select class="fld" data-ch="bdur">${durs.map(([v,k])=>`<option value="${v}" ${!B.allDay&&B.dur===v?'selected':''}>${t(k)}</option>`).join('')}<option value="all" ${B.allDay?'selected':''}>${t('allDay')}</option></select></div>
+    <div class="f"><label>${t('recT')}</label><div class="rec">${rc('week','recWeek','recWeekS')}${rc('month','recMonth','recMonthS')}${rc('custom','recCustom','recCustomS')}${rc('forever','recForever','recForeverS')}</div></div>
+    ${B.rec==='custom'?`<div class="f"><label>${t('toDate')}</label><input class="fld" type="date" min="${B.date}" value="${end}" data-ch="bdate2"></div>`:''}
+    <div class="sum">${B.days.slice().sort((a,b)=>DOW_ORDER.indexOf(a)-DOW_ORDER.indexOf(b)).map(d=>dayName(d,true)).join(sep)} · ${timeTxt}<small>${recText(c)} — ${rangeTxt}</small></div></div>`;
+  let groups='';
+  const okRooms=new Set();
+  for(let n=1;n<=6;n++){
+    const rooms=DATA.rooms.filter(r=>r.floor===n).sort(byName);
+    const res=rooms.map(r=>({r,x:DATA.bookings.find(b=>b.roomIds.includes(r.id)&&conflicts(c,b))}));
+    const nf=res.filter(o=>!o.x).length;
+    groups+=`<div class="fgrp"><h3>${floorName(n)} <small>${rooms.length?t('ofN',nf,rooms.length):t('noRoomsShort')}</small></h3>`;
+    if(rooms.length){
+      groups+='<div class="tiles">'+res.map(({r,x})=>{
+        const sel=B.rooms.includes(r.id)&&!x; if(!x)okRooms.add(r.id);
+        return x?`<div class="tile x"><b>${r.type==='hall'?I.hall:I.door}${esc(roomName(r))}</b><small>${esc(t('occupiedBy',x.title))}</small></div>`
+        :`<button class="tile ${sel?'sel':''}" data-act="pickRoom" data-id="${r.id}"><b>${r.type==='hall'?I.hall:I.door}${esc(roomName(r))}</b><small>${esc(roomSub(r))}</small>${sel?`<span class="ok">${I.check}</span>`:''}</button>`}).join('')+'</div>';
+    }
+    groups+='</div>';
+  }
+  B.rooms=B.rooms.filter(id=>okRooms.has(id));
+  const picked=B.rooms.map(roomById).filter(Boolean);
+  const det=`<div class="card" style="margin-top:16px"><h2>${t('details')}</h2>${picked.length?`<div class="note" style="margin-bottom:10px">${picked.map(p=>`<span class="tag g">${esc(t('fl'+p.floor))} · ${esc(roomName(p))}</span>`).join(' ')}</div>
+      ${isReq?`<div class="f"><label>${t('yourName')}</label><input class="fld" data-in="bname" value="${esc(B.name)}"></div>
+      <div class="f"><label>${t('phone')}</label><input class="fld" type="tel" dir="ltr" data-in="bphone" value="${esc(B.phone)}"></div>`:''}
+      <div class="f"><label>${t('title')}</label><input class="fld" data-in="btitle" value="${esc(B.title)}" placeholder="${esc(t('titlePh'))}"></div>
+      <div class="f"><label>${t('notes')}</label><textarea class="fld" data-in="bnotes" placeholder="${esc(t('notesPh'))}">${esc(B.notes)}</textarea></div>
+      <button class="btn gold" data-act="saveBook">${I.check}${isReq?t('sendReq'):t('save')}</button>`:`<div class="note">${t('pickRoomFirst')}</div>`}</div>`;
+  return `${hd(isReq?t('reqT'):t('bookT'))}
+    <div class="two"><div>${form}</div><div><div class="card"><h2>${t('freeRoomsT')}</h2>${DATA.rooms.length?groups:`<div class="note">${t('noRooms')}</div>`}</div>${det}</div></div>`;
+}
+
+function bookingsView(){
+  const td=today();
+  const all=DATA.bookings.map(b=>{
+    const st=b.endDate&&b.endDate<td?'old':b.startDate>td?'up':'on';
+    return {b,rooms:b.roomIds.map(roomById).filter(Boolean),st};
+  }).filter(x=>x.rooms.length);
+  const q=S.bq.q.trim().toLowerCase();
+  const list=all.filter(x=>(S.bq.floor==='all'||x.rooms.some(r=>r.floor===+S.bq.floor))&&(!q||(x.b.title+' '+(x.b.notes||'')+' '+(x.b.by||'')+' '+x.rooms.map(roomName).join(' ')).toLowerCase().includes(q)))
+    .sort((a,b)=>(a.st==='old')-(b.st==='old')||a.rooms[0].floor-b.rooms[0].floor||a.b.start-b.b.start);
+  const nOld=all.filter(x=>x.st==='old').length;
+  const bar=`<div class="bar"><select class="fld" data-ch="bfloor"><option value="all">${t('allFloors')}</option>${[1,2,3,4,5,6].map(n=>`<option value="${n}" ${S.bq.floor==n?'selected':''}>${floorName(n)}</option>`).join('')}</select>
+    <input class="fld" id="bsearch" data-in="bsearch" value="${esc(S.bq.q)}" placeholder="${esc(t('search'))}" style="flex:1;min-width:180px">
+    ${nOld?`<button class="btn ghost sm" data-act="clearOld">${I.trash}${t('clearOld')} (${nOld})</button>`:''}</div>`;
+  if(!list.length)return `${hd(t('listT'))}${bar}<div class="empty">${I.list.replace('width="20" height="20"','width="46" height="46"')}<b>${t('noBookings')}</b>${t('noBookingsS')}</div>`;
+  return `${hd(t('listT'),t('booksN',list.length))}${bar}<div class="list">`+list.map(({b,rooms,st})=>{
+    const sep=S.lang==='ar'?'، ':', ';
+    const days=b.days.slice().sort((x,y)=>DOW_ORDER.indexOf(x)-DOW_ORDER.indexOf(y)).map(d=>dayName(d)).join(sep);
+    const rng=b.endDate?t('range',fmtD(b.startDate,{day:'numeric',month:'short'}),fmtD(b.endDate,{day:'numeric',month:'short'})):t('until',t('forever'));
+    return `<div class="bk ${st==='old'?'old':''}"><div><h3>${esc(b.title)}</h3><div class="m">
+      <span>${sm(rooms[0].type==='hall'?I.hall:I.door)} ${rooms.map(r=>esc(t('fl'+r.floor))+' · '+esc(roomName(r))).join(' + ')}</span>
+      <span>${esc(days)}</span><span>${b.allDay?t('allDay'):fmtT(b.start)+' – '+fmtT(b.end)}</span>
+      <span class="tag ${st==='old'?'o':st==='up'?'u':'g'}">${st==='old'?t('expired'):st==='up'?t('upcoming'):t('active')}</span><span class="tag">${recText(b)}</span><span>${esc(rng)}</span></div>
+      ${b.by?`<div class="rs" style="margin-top:4px">${t('byL')}: ${esc(b.by)}</div>`:''}
+      ${b.notes?`<div class="rs" style="margin-top:2px">${esc(b.notes)}</div>`:''}</div>
+      <div class="acts"><button class="ic" title="${t('edit')}" data-act="editBooking" data-id="${b.id}">${I.edit}</button><button class="ic del" title="${t('del')}" data-act="delBooking" data-id="${b.id}">${I.trash}</button></div></div>`}).join('')+'</div>';
+}
+
+function roomsView(){
+  const R=S.rf;
+  const form=`<div class="card" style="margin-bottom:18px"><h2>${t('addRoomT')}</h2><div class="frm">
+    <div><label class="lb">${t('floor')}</label><select class="fld" style="width:100%" data-ch="rffloor">${[1,2,3,4,5,6].map(n=>`<option value="${n}" ${R.floor===n?'selected':''}>${floorName(n)}</option>`).join('')}</select></div>
+    <div><label class="lb">${t('type')}</label><select class="fld" style="width:100%" data-ch="rftype"><option value="room" ${R.type==='room'?'selected':''}>${t('room')}</option><option value="hall" ${R.type==='hall'?'selected':''}>${t('hall')}</option></select></div>
+    <div><label class="lb">${t('nameAr')}</label><input class="fld" style="width:100%" data-in="rf-ar" value="${esc(R.ar)}"></div>
+    <div><label class="lb">${t('nameEn')}</label><input class="fld" style="width:100%" dir="ltr" data-in="rf-en" value="${esc(R.en)}"></div>
+    <div><label class="lb">${t('capL')}</label><input class="fld" style="width:100%" type="number" min="1" data-in="rf-cap" value="${esc(R.cap)}"></div>
+    <div><button class="btn gold" style="width:100%" data-act="addRoom">${I.plus}${t('add')}</button></div></div></div>`;
+  let h=hd(t('roomsT'))+form;
+  if(!DATA.rooms.length)h+=`<div class="empty"><b>${t('noRooms')}</b>${t('seedS')}<div style="margin-top:14px"><button class="btn" data-act="seed">${I.plus}${t('seed')}</button></div></div>`;
+  for(let n=1;n<=6;n++){
+    const rooms=DATA.rooms.filter(r=>r.floor===n).sort(byName);
+    h+=`<div class="card" style="margin-bottom:14px"><h2 style="font-size:19px">${floorName(n)}</h2>`;
+    h+=rooms.length?rooms.map(r=>`<div class="rl">${r.type==='hall'?I.hall:I.door}<span class="n">${esc(roomName(r))}<small>${esc(roomSub(r))}</small></span>
+      <button class="ic" title="${t('edit')}" data-act="editRoom" data-id="${r.id}">${I.edit}</button><button class="ic del" title="${t('del')}" data-act="delRoom" data-id="${r.id}">${I.trash}</button></div>`).join(''):`<div class="note">${n===5?t('noRooms5'):n===6?t('noRooms6'):t('noRooms')}</div>`;
+    h+='</div>';
+  }
+  return h;
+}
+
+function settingsView(){
+  const sub=S.sub, nr=DATA.requests.length;
+  const pill=(k,l,b)=>`<button class="pl ${sub===k?'on':''}" data-act="sub" data-v="${k}">${l}${b?`<span class="nb">${b}</span>`:''}</button>`;
+  let h=hd(t('setT'))+`<div class="pills">${pill('req',t('sReq'),nr)}${pill('gen',t('sGen'))}${pill('sec',t('sSec'))}${pill('data',t('sData'))}</div>`;
+  const sep=S.lang==='ar'?'، ':', ';
+  if(sub==='req'){
+    if(!nr)return h+`<div class="empty"><b>${t('noReq')}</b></div>`;
+    return h+'<div class="list">'+DATA.requests.map(q=>{
+      const rooms=(q.roomIds||[]).map(roomById).filter(Boolean);
+      const days=(q.days||[]).slice().sort((x,y)=>DOW_ORDER.indexOf(x)-DOW_ORDER.indexOf(y)).map(d=>dayName(d)).join(sep);
+      const rng=q.endDate?t('range',fmtD(q.startDate,{day:'numeric',month:'short'}),fmtD(q.endDate,{day:'numeric',month:'short'})):t('until',t('forever'));
+      const created=q.createdAt?new Intl.DateTimeFormat(loc(),{day:'numeric',month:'short',hour:'numeric',minute:'2-digit'}).format(new Date(q.createdAt)):'';
+      return `<div class="bk rq"><div><h3>${esc(q.title)}</h3><div class="m">
+        <span><b>${t('reqFrom')}:</b> ${esc(q.name)}${q.phone?` · <span dir="ltr">${esc(q.phone)}</span>`:''}</span>
+        <span>${rooms.map(r=>esc(t('fl'+r.floor))+' · '+esc(roomName(r))).join(' + ')||'—'}</span>
+        <span>${esc(days)}</span><span>${q.allDay?t('allDay'):fmtT(q.start)+' – '+fmtT(q.end)}</span><span class="tag">${recText(q)}</span><span>${esc(rng)}</span>${created?`<span>${esc(created)}</span>`:''}</div>
+        ${q.notes?`<div class="rs" style="margin-top:4px">${esc(q.notes)}</div>`:''}</div>
+        <div class="acts"><button class="btn sm grn" data-act="approveReq" data-id="${q.id}">${I.check}${t('approve')}</button><button class="btn sm red" data-act="rejectReq" data-id="${q.id}">${t('reject')}</button></div></div>`}).join('')+'</div>';
+  }
+  if(sub==='gen'){
+    const hrs=(a,b,sel)=>{let o='';for(let x=a;x<=b;x++)o+=`<option value="${x}" ${+sel===x?'selected':''}>${fmtT(x*60)}</option>`;return o};
+    return h+`<div class="card set"><h2>${t('genT')}</h2><div class="sub">${t('genS')}</div>
+      <div class="frm" style="margin-bottom:14px">
+        <div><label class="lb">${t('churchAr')}</label><input class="fld" style="width:100%" id="s_car" value="${esc(ST.churchAr)}"></div>
+        <div><label class="lb">${t('churchEn')}</label><input class="fld" style="width:100%" dir="ltr" id="s_cen" value="${esc(ST.churchEn)}"></div></div>
+      <div class="frm" style="margin-bottom:14px">
+        <div><label class="lb">${t('dayStartL')}</label><select class="fld" style="width:100%" id="s_ds">${hrs(0,12,ST.dayStart)}</select></div>
+        <div><label class="lb">${t('dayEndL')}</label><select class="fld" style="width:100%" id="s_de">${hrs(13,24,ST.dayEnd)}</select></div>
+        <div><label class="lb">${t('stepL')}</label><select class="fld" style="width:100%" id="s_step"><option value="15" ${ST.step===15?'selected':''}>${t('min15')}</option><option value="30" ${ST.step===30?'selected':''}>${t('min30')}</option><option value="60" ${ST.step===60?'selected':''}>${t('min60')}</option></select></div>
+        <div><label class="lb">${t('tzL')}</label><select class="fld" style="width:100%" id="s_tz"><option value="Africa/Cairo" ${ST.tz==='Africa/Cairo'?'selected':''}>${t('tzCairo')}</option><option value="device" ${ST.tz==='device'?'selected':''}>${t('tzDev')}</option></select></div></div>
+      <label class="sw"><input type="checkbox" id="s_req" ${ST.allowRequests?'checked':''}><span>${t('allowReq')}</span></label>
+      <label class="sw"><input type="checkbox" id="s_auto" ${ST.autoClean?'checked':''}><span>${t('autoClean')}</span></label>
+      <div style="margin-top:16px"><button class="btn gold" data-act="saveSettings">${I.check}${t('saveSet')}</button></div></div>`;
+  }
+  if(sub==='sec')return h+`<div class="card set"><h2>${t('secT')}</h2><div class="sub">${t('secS')}</div>
+    <div class="f"><label>${t('pwCur')}</label><input class="fld" type="password" id="p_cur" autocomplete="current-password"></div>
+    <div class="f"><label>${t('pwNew')}</label><input class="fld" type="password" id="p_new" autocomplete="new-password"></div>
+    <div class="f"><label>${t('pwNew2')}</label><input class="fld" type="password" id="p_new2" autocomplete="new-password"></div>
+    <button class="btn gold" data-act="changePw">${I.check}${t('pwChange')}</button></div>`;
+  const nOld=DATA.bookings.filter(b=>b.endDate&&b.endDate<today()).length;
+  return h+`<div class="card set"><h2>${t('dataT')}</h2><div class="sub">${t('dataS')}</div>
+    <div class="acts" style="justify-content:flex-start"><button class="btn ghost" data-act="exportData">${t('export')}</button>
+    <button class="btn ghost" data-act="clearOld" ${nOld?'':'disabled'}>${I.trash}${t('clearOldNow')} (${nOld})</button></div></div>
+    <div class="card set dz" style="margin-top:14px"><h2 style="color:var(--busy)">${t('dangerT')}</h2>
+    <button class="btn red" data-act="wipe">${I.trash}${t('wipe')}</button></div>`;
+}
+
+function main(){
+  if(S.tab[0]==='f')return floorView(+S.tab.slice(1));
+  if(S.tab==='book'&&canReq())return bookView();
+  if(S.role!=='admin')return floorView(1);
+  return S.tab==='bookings'?bookingsView():S.tab==='rooms'?roomsView():S.tab==='settings'?settingsView():floorView(1);
+}
+function render(){
+  const app=$('#app');
+  document.documentElement.lang=S.lang; document.documentElement.dir=S.lang==='ar'?'rtl':'ltr';
+  document.title=`${t('brand')} — ${churchName()}`;
+  if(!S.ready){app.innerHTML='<div class="load">…</div>';return}
+  if(!S.role){app.innerHTML=login();return}
+  app.innerHTML=topbar()+`<div class="grid">${side()}<main>${main()}</main></div>`;
+  autoClean();
+}
+let rp;
+function softRender(){
+  clearTimeout(rp);
+  rp=setTimeout(()=>{const a=document.activeElement;
+    if(a&&/INPUT|TEXTAREA/.test(a.tagName)&&$('#app').contains(a)&&S.role){clearTimeout(softRender.t);softRender.t=setTimeout(softRender,4000);return}
+    render()},40);
+}
+
+/* ------------------------------ modal ------------------------------ */
+function openModal(title,body,onSave,extra=''){
+  S.modal={onSave};
+  $('#modal').innerHTML=`<div class="ov" data-act="mclose"><div class="dlg"><h2>${title}</h2>${body}
+    <div class="acts"><button class="btn" data-act="msave">${t('sv')}</button><button class="btn ghost" data-act="mclose">${t('cancel')}</button>${extra}</div></div></div>`;
+  const f=$('#modal input,#modal textarea'); if(f)f.focus();
+}
+function closeModal(){const m=S.modal;S.modal=null;$('#modal').innerHTML='';if(m&&m.ask)m.ask(null)}
+function ask(msg,actions){
+  return new Promise(res=>{
+    S.modal={ask:res};
+    $('#modal').innerHTML=`<div class="ov" data-act="mclose"><div class="dlg"><h2>${esc(msg)}</h2><div class="acts" style="flex-direction:column;align-items:stretch">${
+      actions.map(a=>`<button class="btn ${a.cls||''}" data-act="mask" data-v="${a.v}">${esc(a.l)}</button>`).join('')}</div></div></div>`;
+  });
+}
+
+/* ------------------------------ navigation ------------------------------ */
+function go(tab,sub){
+  if(tab!==S.tab){S.hist.push(S.tab);try{history.pushState({h:S.hist.length},'')}catch(e){}}
+  S.tab=tab; if(sub)S.sub=sub;
+  render(); window.scrollTo({top:0,behavior:'smooth'});
+}
+window.addEventListener('popstate',()=>{if(S.hist.length){S.tab=S.hist.pop();render()}});
+
+/* ------------------------------ actions ------------------------------ */
+const A={
+  lang(){S.lang=S.lang==='ar'?'en':'ar';localStorage.setItem('g_lang',S.lang);render()},
+  togglePw(){const i=$('#pw');i.type=i.type==='password'?'text':'password'},
+  async login(){
+    const v=$('#pw').value; if(!v)return;
+    try{await backend.login(v);S.err='';S.hist=[];S.tab='f1';render()}
+    catch(e){S.err=(e&&e.code&&/network|unavailable/i.test(e.code))?t('netErr'):t('wrongPw');render();const p=$('#pw');if(p)p.focus()}
+  },
+  viewer(){S.role='viewer';sessionStorage.setItem('g_role','viewer');S.tab='f1';S.hist=[];render()},
+  async logout(){sessionStorage.removeItem('g_role');try{await backend.logout()}catch(e){}S.role=null;S.tab='f1';S.hist=[];S.err='';S.book=null;render()},
+  back(){if(S.hist.length)history.back()},
+  tab(d){go(d.v)},
+  sub(d){S.sub=d.v;render()},
+  goReq(){go('settings','req');S.sub='req';render()},
+  date(d){setDate(d.v)},
+  weekNav(d){setDate(addDays(S.date,+d.v))},
+  now(){S.date=today();S.time='now';render()},
+  filter(d){S.filter=d.v;render()},
+  bookRoom(d){
+    const tt=curT(); S.book=newBook(); const B=S.book;
+    B.date=S.date;B.days=[dow(S.date)];B.rooms=[d.id];B.date2=addDays(B.date,13);
+    if(S.time==='all')B.allDay=true; else B.start=clampStart(Math.floor(tt/ST.step)*ST.step);
+    fixDays(B); go('book');
+  },
+  freeGo(d){if(canReq())A.bookRoom(d);else go('f'+d.f)},
+  toggleDay(d){const B=S.book,v=+d.v;const i=B.days.indexOf(v);if(i>=0){if(B.days.length>1)B.days.splice(i,1)}else B.days.push(v);render()},
+  setRec(d){S.book.rec=d.v;fixDays(S.book);render()},
+  pickRoom(d){const B=S.book,i=B.rooms.indexOf(d.id);if(i>=0)B.rooms.splice(i,1);else B.rooms.push(d.id);render()},
+  async saveBook(){
+    const B=S.book, isReq=S.role!=='admin', title=B.title.trim();
+    if(!B.rooms.length){toast(t('pickRoomFirst'));return}
+    if(isReq&&!B.name.trim()){toast(t('needYourName'));return}
+    if(!title){toast(t('need'));return}
+    if(!B.days.length){toast(t('needDay'));return}
+    const b={roomIds:[...B.rooms],title,notes:B.notes.trim(),days:[...B.days].sort(),start:B.allDay?0:B.start,end:B.allDay?1440:Math.min(B.start+B.dur,1440),allDay:B.allDay,
+      startDate:B.date,endDate:endDateFor(B),rec:B.rec,exceptions:[]};
+    if(DATA.bookings.some(x=>x.roomIds.some(r=>b.roomIds.includes(r))&&conflicts(b,x))){toast(t('conflict'));render();return}
+    try{
+      if(isReq){
+        await backend.addRequest({...b,name:B.name.trim(),phone:B.phone.trim(),status:'pending',createdAt:Date.now()});
+        toast(t('reqSent')); S.book=null; go('f1');
+      }else{
+        await backend.addBooking(b);toast(t('saved'));B.title='';B.notes='';B.rooms=[];render();
+      }
+    }catch(e){console.error(e);toast(t('netErr'))}
+  },
+  async approveReq(d){
+    const q=DATA.requests.find(x=>x.id===d.id); if(!q)return;
+    const b={roomIds:q.roomIds,title:q.title,notes:q.notes||'',by:q.name+(q.phone?` (${q.phone})`:''),days:q.days,start:q.start,end:q.end,allDay:!!q.allDay,startDate:q.startDate,endDate:q.endDate??null,rec:q.rec,exceptions:[]};
+    if(DATA.bookings.some(x=>x.roomIds.some(r=>b.roomIds.includes(r))&&conflicts(b,x))){toast(t('conflict'));return}
+    try{await backend.addBooking(b);await backend.deleteRequest(q.id);toast(t('approved'))}catch(e){console.error(e);toast(t('netErr'))}
+  },
+  async rejectReq(d){
+    const v=await ask(t('confRej'),[{l:t('reject'),v:'y',cls:'red'},{l:t('keep'),v:'n',cls:'ghost'}]); if(v!=='y')return;
+    try{await backend.deleteRequest(d.id);toast(t('rejected'))}catch(e){toast(t('netErr'))}
+  },
+  async delBooking(d){
+    const b=DATA.bookings.find(x=>x.id===d.id); if(!b)return;
+    let v;
+    if(d.date&&occCount(b)>1&&occursOn(b,d.date)){
+      v=await ask(t('delRecQ'),[{l:`${t('delThisDay')} (${fmtD(d.date,{weekday:'long',day:'numeric',month:'long'})})`,v:'one',cls:'gold'},{l:t('delAll'),v:'all',cls:'red'},{l:t('keep'),v:'n',cls:'ghost'}]);
+    }else v=await ask(t('confDelB'),[{l:t('del'),v:'all',cls:'red'},{l:t('keep'),v:'n',cls:'ghost'}]);
+    try{
+      if(v==='one'){await backend.updateBooking(b.id,{exceptions:[...b.exceptions,d.date]});toast(t('deleted'))}
+      else if(v==='all'){await backend.deleteBooking(b.id);toast(t('deleted'))}
+    }catch(e){console.error(e);toast(t('netErr'))}
+  },
+  editBooking(d){
+    const b=DATA.bookings.find(x=>x.id===d.id); if(!b)return;
+    openModal(t('editBook'),`<div class="f"><label>${t('title')}</label><input class="fld" id="m1" value="${esc(b.title)}"></div>
+      <div class="f"><label>${t('notes')}</label><textarea class="fld" id="m2">${esc(b.notes||'')}</textarea></div>
+      <div class="f"><label>${t('editEnd')}</label><input class="fld" type="date" id="m3" min="${b.startDate}" value="${b.endDate||''}"></div>`,
+      async()=>{
+        const v=$('#m1').value.trim(); if(!v){toast(t('need'));return false}
+        const ed=$('#m3').value||null;
+        if(ed&&ed<b.startDate){toast(t('endBad'));return false}
+        const nb={...b,endDate:ed};
+        if(DATA.bookings.some(x=>x.id!==b.id&&x.roomIds.some(r=>b.roomIds.includes(r))&&conflicts(nb,x))){toast(t('conflict'));return false}
+        await backend.updateBooking(b.id,{title:v,notes:$('#m2').value.trim(),endDate:ed,rec:ed?(b.rec==='forever'?'custom':b.rec):'forever'});toast(t('updated'))
+      },
+      `<button class="btn red" data-act="mdel" data-id="${b.id}" data-date="${d.date||''}" style="margin-inline-start:auto">${I.trash}${t('del')}</button>`);
+  },
+  mdel(d){closeModal();A.delBooking(d)},
+  async clearOld(){
+    const v=await ask(t('confClear'),[{l:t('del'),v:'y',cls:'red'},{l:t('keep'),v:'n',cls:'ghost'}]); if(v!=='y')return;
+    const td=today();
+    try{for(const b of DATA.bookings.filter(b=>b.endDate&&b.endDate<td))await backend.deleteBooking(b.id);toast(t('deleted'))}catch(e){toast(t('netErr'))}
+  },
+  async wipe(){
+    const v=await ask(t('confWipe'),[{l:t('wipe'),v:'y',cls:'red'},{l:t('keep'),v:'n',cls:'ghost'}]); if(v!=='y')return;
+    try{await backend.wipeBookings();toast(t('deleted'))}catch(e){toast(t('netErr'))}
+  },
+  exportData(){
+    const blob=new Blob([JSON.stringify({exported:new Date().toISOString(),settings:ST,rooms:DATA.rooms,bookings:DATA.bookings},null,2)],{type:'application/json'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`georgios-rooms-backup-${today()}.json`;document.body.appendChild(a);a.click();a.remove();
+  },
+  async saveSettings(){
+    const p={churchAr:$('#s_car').value.trim()||DEFAULTS.churchAr,churchEn:$('#s_cen').value.trim()||DEFAULTS.churchEn,
+      dayStart:+$('#s_ds').value,dayEnd:+$('#s_de').value,step:+$('#s_step').value,tz:$('#s_tz').value,allowRequests:$('#s_req').checked,autoClean:$('#s_auto').checked};
+    if(p.dayEnd<=p.dayStart){toast(t('hoursBad'));return}
+    try{await backend.saveSettings(p);toast(t('setSaved'))}catch(e){console.error(e);toast(t('netErr'))}
+  },
+  async changePw(){
+    const c=$('#p_cur').value,n=$('#p_new').value,n2=$('#p_new2').value;
+    if(n.length<6){toast(t('pwShort'));return}
+    if(n!==n2){toast(t('pwMismatch'));return}
+    try{await backend.changePassword(c,n);toast(t('pwChanged'));['#p_cur','#p_new','#p_new2'].forEach(s=>$(s).value='')}
+    catch(e){console.error(e);toast(/wrong|invalid-credential|wrong-password/.test((e&&e.code)||'')?t('pwWrongCur'):/weak/.test((e&&e.code)||'')?t('pwShort'):t('netErr'))}
+  },
+  async addRoom(){
+    const R=S.rf; if(!R.ar.trim()&&!R.en.trim()){toast(t('needName'));return}
+    const r={floor:R.floor,type:R.type,nameAr:R.ar.trim(),nameEn:R.en.trim(),cap:R.cap?+R.cap:null};
+    try{await backend.addRoom(r);S.rf={...R,ar:'',en:'',cap:''};toast(t('roomAdded'));render()}catch(e){toast(t('netErr'))}
+  },
+  async seed(){try{await backend.seed()}catch(e){toast(t('netErr'))}},
+  async delRoom(d){
+    const v=await ask(t('confDelR'),[{l:t('del'),v:'y',cls:'red'},{l:t('keep'),v:'n',cls:'ghost'}]); if(v!=='y')return;
+    try{await backend.deleteRoom(d.id);toast(t('deleted'))}catch(e){toast(t('netErr'))}
+  },
+  editRoom(d){
+    const r=roomById(d.id); if(!r)return;
+    openModal(t('editRoom'),`<div class="f"><label>${t('floor')}</label><select class="fld" id="m5">${[1,2,3,4,5,6].map(n=>`<option value="${n}" ${r.floor===n?'selected':''}>${floorName(n)}</option>`).join('')}</select></div>
+      <div class="f"><label>${t('type')}</label><select class="fld" id="m3"><option value="room" ${r.type==='room'?'selected':''}>${t('room')}</option><option value="hall" ${r.type==='hall'?'selected':''}>${t('hall')}</option></select></div>
+      <div class="f"><label>${t('nameAr')}</label><input class="fld" id="m1" value="${esc(r.nameAr||'')}"></div>
+      <div class="f"><label>${t('nameEn')}</label><input class="fld" id="m2" dir="ltr" value="${esc(r.nameEn||'')}"></div>
+      <div class="f"><label>${t('capL')}</label><input class="fld" id="m4" type="number" min="1" value="${esc(r.cap||'')}"></div>`,
+      async()=>{const ar=$('#m1').value.trim(),en=$('#m2').value.trim();if(!ar&&!en){toast(t('needName'));return false}
+        const cap=$('#m4').value;await backend.updateRoom(r.id,{nameAr:ar,nameEn:en,type:$('#m3').value,floor:+$('#m5').value,cap:cap?+cap:null});toast(t('updated'))});
+  },
+  mclose(d,el,e){if(el.classList.contains('ov')&&e.target!==el)return;closeModal()},
+  mask(d){const m=S.modal;if(!m||!m.ask)return;S.modal=null;$('#modal').innerHTML='';m.ask(d.v)},
+  async msave(){const f=S.modal&&S.modal.onSave;if(!f)return;try{const r=await f();if(r!==false)closeModal()}catch(e){console.error(e);toast(t('netErr'))}}
+};
+function setDate(v){
+  if(!v)return; S.date=v;
+  if(S.time==='now'&&v!==today())S.time=clampStart(Math.floor(nowMin()/ST.step)*ST.step);
+  render();
+}
+document.addEventListener('click',e=>{
+  const el=e.target.closest('[data-act]'); if(!el)return;
+  const f=A[el.dataset.act]; if(f)f(el.dataset,el,e);
+});
+document.addEventListener('change',e=>{
+  const k=e.target.dataset.ch; if(!k)return; const v=e.target.value;
+  if(k==='date')setDate(v);
+  else if(k==='time'){S.time=v==='now'?'now':v==='all'?'all':+v;if(S.time==='now')S.date=today();render()}
+  else if(k==='bdate'){if(!v)return;const B=S.book;B.date=v;B.days=[dow(v)];if(B.date2<v)B.date2=addDays(v,13);fixDays(B);render()}
+  else if(k==='bdate2'){S.book.date2=v||S.book.date;render()}
+  else if(k==='bstart'){S.book.start=+v;render()}
+  else if(k==='bdur'){if(v==='all')S.book.allDay=true;else{S.book.allDay=false;S.book.dur=+v}render()}
+  else if(k==='bfloor'){S.bq.floor=v;render()}
+  else if(k==='rffloor'){S.rf.floor=+v}
+  else if(k==='rftype'){S.rf.type=v}
+});
+document.addEventListener('input',e=>{
+  const k=e.target.dataset.in; if(!k)return; const v=e.target.value;
+  if(k==='btitle')S.book.title=v; else if(k==='bnotes')S.book.notes=v; else if(k==='bname')S.book.name=v; else if(k==='bphone')S.book.phone=v;
+  else if(k==='rf-ar')S.rf.ar=v; else if(k==='rf-en')S.rf.en=v; else if(k==='rf-cap')S.rf.cap=v;
+  else if(k==='bsearch'){S.bq.q=v;render();const i=$('#bsearch');if(i){i.focus();i.setSelectionRange(v.length,v.length)}}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.id==='pw')A.login();
+  if(e.key==='Escape'&&S.modal)closeModal();
+});
+
+/* ------------------------------ boot ------------------------------ */
+(async()=>{
+  applySettings(); render();
+  try{
+    backend=FB?await firebaseBackend():demoBackend();
+    await backend.init();
+  }catch(e){
+    console.error(e);
+    $('#app').innerHTML=`<div class="load">${esc(t('netErr'))}</div>`;
+    return;
+  }
+  // الساعة تتحدث كل ثانية، والشاشة كلها تتحدث عند تغيّر الدقيقة
+  setInterval(()=>{
+    const c=$('#clk'); if(c)c.textContent=clockText();
+    const m=nowMin();
+    if(m!==S.lastMin){S.lastMin=m;if(S.time==='now')S.date=today();if(S.role)softRender()}
+  },1000);
+})();
+</script>
+</body>
+</html>
