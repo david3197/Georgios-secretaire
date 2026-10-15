@@ -297,7 +297,7 @@ html[dir=ltr] .scale .tlh span{transform:translate(-50%,-50%)}
    }
    ========================================================================== */
 const CONFIG = {
-  ADMIN_EMAIL: 'admin@georgios.church',   // نفس الإيميل الذي ستنشئه في Authentication → Users
+  ADMIN_EMAIL: 'davidaziz319@gmail.com',   // لازم يكون نفس المستخدم في Firebase → Authentication → Users
   DEMO_PASSWORD: '1234',                  // للنسخة التجريبية فقط (قبل ربط Firebase)
   firebase: {
     apiKey: 'AIzaSyBljklNgcr93P4ZfAuAoFqn-RNJ6aX67zw',
@@ -316,7 +316,7 @@ ar:{
   brand:'مبنى الخدمات',
   fl1:'الدور الأول',fl2:'الدور الثاني',fl3:'الدور الثالث',fl4:'الدور الرابع',fl5:'الدور الخامس',fl6:'الدور السادس',fs5:'المشغل',fs6:'البرجولة',
   loginT:'أهلاً بك', loginS:'ادخل كلمة السر للإدارة، أو ادخل كزائر لمعرفة الأماكن الفاضية وإرسال طلب حجز.', pw:'كلمة السر', enter:'دخول الإدارة', loginViewer:'دخول كزائر', loginViewerS:'عرض أو طلب حجز', or:'أو',
-  wrongPw:'كلمة السر غير صحيحة، حاول مرة أخرى.', netErr:'تعذر الاتصال أو الحفظ. تأكد من الإنترنت وإعدادات Firebase.', logout:'خروج', roleAdmin:'إدارة', roleView:'زائر (عرض / طلب حجز)',
+  wrongPw:'كلمة السر غير صحيحة. (لو لسه ماعملتش مستخدم الأدمن، أضفه من Firebase ← Authentication ← Users بنفس إيميل ADMIN_EMAIL).', errNoAuth:'تسجيل الدخول بالإيميل غير مفعّل. فعّل Email/Password من Firebase → Authentication → Sign-in method.', errDomain:'هذا الرابط غير مصرّح به. أضفه في Firebase → Authentication → Settings → Authorized domains.', errMany:'محاولات كثيرة. انتظر دقائق وحاول تاني.', errKey:'مفتاح Firebase غير صحيح. راجع الـ config في أول الملف.', errCode:'خطأ غير متوقع', emailL:'الإيميل', loadErr:'تعذر تحميل البيانات. غالبًا قواعد Firestore (Rules) لا تسمح بالقراءة للزوار. راجع خطوة الـ Rules وتأكد إنها منشورة (Publish) وفيها allow read: if true.', netErr:'تعذر الاتصال أو الحفظ. تأكد من الإنترنت وإعدادات Firebase.', logout:'خروج', roleAdmin:'إدارة', roleView:'زائر (عرض / طلب حجز)',
   demo:'نسخة تجريبية — المواعيد محفوظة على هذا الجهاز فقط. أضف إعدادات Firebase لتظهر لكل الناس.',
   back:'رجوع', live:'مباشر', now:'الآن', today:'اليوم', allDay:'اليوم كله', day:'اليوم', time:'الوقت', pickDate:'تاريخ آخر', backNow:'العودة للوقت الحالي', prevW:'الأسبوع السابق', nextW:'الأسبوع التالي',
   free:'فاضية', busy:'مشغولة', partial:'مشغولة جزئياً', freeAll:'فاضية طوال اليوم', busyAll:'مشغولة طوال اليوم', freeUntil:x=>`فاضية حتى ${x}`, freeRest:'فاضية بقية اليوم', all:'الكل',
@@ -356,7 +356,7 @@ en:{
   brand:'Services Building',
   fl1:'First Floor',fl2:'Second Floor',fl3:'Third Floor',fl4:'Fourth Floor',fl5:'Fifth Floor',fl6:'Sixth Floor',fs5:'Workshop',fs6:'Pergola',
   loginT:'Welcome', loginS:'Enter the password for admin access, or continue as a visitor to see free places and send a booking request.', pw:'Password', enter:'Admin sign in', loginViewer:'Continue as visitor', loginViewerS:'view or request', or:'or',
-  wrongPw:'Wrong password. Please try again.', netErr:'Connection or save failed. Check your internet and Firebase settings.', logout:'Sign out', roleAdmin:'Admin', roleView:'Visitor (view / request)',
+  wrongPw:'Wrong password. (If you have not created the admin user yet, add it in Firebase → Authentication → Users with the ADMIN_EMAIL address.)', errNoAuth:'Email sign-in is not enabled. Turn on Email/Password in Firebase → Authentication → Sign-in method.', errDomain:'This site address is not authorized. Add it in Firebase → Authentication → Settings → Authorized domains.', errMany:'Too many attempts. Wait a few minutes and try again.', errKey:'Invalid Firebase key. Check the config at the top of the file.', errCode:'Unexpected error', emailL:'Email', loadErr:'Could not load data. Most likely the Firestore Rules do not allow visitors to read. Check the Rules step and make sure they are published with allow read: if true.', netErr:'Connection or save failed. Check your internet and Firebase settings.', logout:'Sign out', roleAdmin:'Admin', roleView:'Visitor (view / request)',
   demo:'Demo mode — bookings are saved on this device only. Add your Firebase config to share them with everyone.',
   back:'Back', live:'Live', now:'Now', today:'Today', allDay:'All day', day:'Day', time:'Time', pickDate:'Other date', backNow:'Back to current time', prevW:'Previous week', nextW:'Next week',
   free:'Free', busy:'Busy', partial:'Partly busy', freeAll:'Free all day', busyAll:'Busy all day', freeUntil:x=>`Free until ${x}`, freeRest:'Free for the rest of the day', all:'All',
@@ -554,7 +554,7 @@ async function firebaseBackend(){
   const app=A_.initializeApp(CONFIG.firebase), db=F.getFirestore(app), auth=H.getAuth(app);
   let gotR=false,gotB=false,unsubReq=null;
   const check=()=>{if(gotR&&gotB)DATA.loaded=true;render()};
-  const onErr=e=>{console.error(e);toast(t('netErr'))};
+  const onErr=e=>{console.error(e);DATA.loadErr=(e&&e.code)||'error';toast(t('netErr'));render()};
   F.onSnapshot(F.collection(db,'rooms'),s=>{DATA.rooms=s.docs.map(x=>({id:x.id,...x.data()}));gotR=true;check()},onErr);
   F.onSnapshot(F.collection(db,'bookings'),s=>{DATA.bookings=s.docs.map(x=>norm({id:x.id,...x.data()}));gotB=true;check()},onErr);
   F.onSnapshot(F.doc(db,'settings','main'),s=>{setST(s.exists()?s.data():{});render()},()=>{});
@@ -570,7 +570,11 @@ async function firebaseBackend(){
   });
   return {
     async init(){},
-    async login(pw){await H.signInWithEmailAndPassword(auth,CONFIG.ADMIN_EMAIL,pw)},
+    async login(pw){
+      const em=ST.adminEmail||CONFIG.ADMIN_EMAIL;           // الإيميل المحفوظ في Firestore (settings/main.adminEmail) أولاً
+      await H.signInWithEmailAndPassword(auth,em,pw);
+      if(ST.adminEmail!==em)F.setDoc(F.doc(db,'settings','main'),{adminEmail:em},{merge:true}).catch(()=>{});
+    },
     async logout(){await H.signOut(auth)},
     async changePassword(cur,nw){
       const u=auth.currentUser;
@@ -687,7 +691,7 @@ function freePanel(){
 }
 
 function floorView(n){
-  if(!DATA.loaded)return `<div class="load">…</div>`;
+  if(!DATA.loaded)return DATA.loadErr?`<div class="empty"><b>${t('loadErr')}</b><div dir="ltr" style="margin-top:8px;font-size:13px">${esc(DATA.loadErr)}</div></div>`:`<div class="load">…</div>`;
   const rooms=DATA.rooms.filter(r=>r.floor===n).sort(byName);
   const items=rooms.map(r=>({r,s:roomState(r)}));
   const nf=items.filter(x=>x.s.st==='free').length, nb=items.length-nf;
@@ -945,7 +949,18 @@ const A={
   async login(){
     const v=$('#pw').value; if(!v)return;
     try{await backend.login(v);S.err='';S.hist=[];S.tab='f1';render()}
-    catch(e){S.err=(e&&e.code&&/network|unavailable/i.test(e.code))?t('netErr'):t('wrongPw');render();const p=$('#pw');if(p)p.focus()}
+    catch(e){
+      console.error(e);
+      const c=(e&&e.code)||'';
+      S.err=/invalid-credential|wrong-password|user-not-found|invalid-email|missing-password/.test(c)||(!c&&!FB)?t('wrongPw')
+        :/operation-not-allowed|configuration-not-found/.test(c)?t('errNoAuth')
+        :/unauthorized-domain/.test(c)?t('errDomain')
+        :/too-many/.test(c)?t('errMany')
+        :/api-key/.test(c)?t('errKey')
+        :/network|unavailable/.test(c)?t('netErr')
+        :`${t('errCode')}: ${c||e}`;
+      render();const p=$('#pw');if(p)p.focus()
+    }
   },
   viewer(){S.role='viewer';sessionStorage.setItem('g_role','viewer');S.tab='f1';S.hist=[];render()},
   async logout(){sessionStorage.removeItem('g_role');try{await backend.logout()}catch(e){}S.role=null;S.tab='f1';S.hist=[];S.err='';S.book=null;render()},
