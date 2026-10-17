@@ -1,6 +1,6 @@
 // Service worker — يحفظ شكل التطبيق للفتح السريع، ويجلب أحدث نسخة أولاً عند وجود إنترنت.
 // بيانات الغرف والحجوزات تأتي من Firebase مباشرة ولا تُحفظ هنا.
-const CACHE = 'georgios-rooms-v1';
+const CACHE = 'georgios-rooms-v2';
 const SHELL = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', e => {

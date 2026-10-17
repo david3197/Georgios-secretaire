@@ -96,7 +96,6 @@ html[dir=ltr] .backb svg{transform:scaleX(-1)}
 .days{display:flex;gap:6px;flex-wrap:wrap}
 .wn{width:32px;height:52px;border-radius:10px;border:1px solid var(--line);background:#f6f8fc;display:grid;place-items:center;color:var(--ink3)}
 .wn:hover{border-color:var(--ink3)}
-html[dir=rtl] .wn svg{transform:scaleX(-1)}
 .wl{font-size:12.5px;color:var(--mut);font-weight:600;margin-top:5px}
 .dc{min-width:56px;padding:6px 8px;border-radius:10px;border:1px solid var(--line);background:#f6f8fc;text-align:center;line-height:1.25}
 .dc small{display:block;font-size:12px;color:var(--mut)}
@@ -221,6 +220,37 @@ html[dir=ltr] .scale .tlh span{transform:translate(-50%,-50%)}
 .set .sub{color:var(--mut);font-size:13.5px;margin:-4px 0 14px}
 .dz{border-color:var(--busyLine);background:#fffafa}
 
+/* ---------- buildings / calendar / where ---------- */
+.bsw{display:flex;gap:6px;flex-wrap:wrap}
+.bs{padding:7px 14px;border-radius:99px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:13.5px;color:var(--ink)}
+.bs:hover{border-color:var(--ink3)}
+.bs.on{background:var(--gold);border-color:var(--gold)}
+.wn.pv svg{transform:scaleX(-1)}
+html[dir=rtl] .wn.pv svg{transform:none}
+html[dir=rtl] .wn.nx svg{transform:scaleX(-1)}
+.cal{border:1px solid var(--line);border-radius:12px;padding:10px;background:#f9fbfe}
+.calh{display:flex;align-items:center;justify-content:space-between;font-weight:700;margin-bottom:8px}
+.calg{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.calg b{font-size:12px;color:var(--mut);font-weight:600;padding-bottom:2px}
+.cd{height:36px;border-radius:8px;border:1px solid transparent;background:#fff;font-weight:600}
+.cd:hover:not([disabled]){border-color:var(--ink3)}
+.cd.on{background:var(--ink);color:#fff}
+.cd.td{box-shadow:inset 0 -3px 0 var(--gold)}
+.cd[disabled]{opacity:.3;cursor:not-allowed}
+.calsel{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.calsel .tag{cursor:pointer}
+.wh{font-size:19px;color:var(--ink);margin:18px 2px 8px}
+.wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(360px,100%),1fr));gap:12px}
+.wcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.wd{display:grid;grid-template-columns:64px 1fr;gap:4px 10px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+.wd:first-of-type{margin-top:8px}
+.wd .dn{font-weight:700;font-size:13.5px}
+.wd .fb{grid-column:1/-1;font-size:13px;font-weight:600}
+.wd.ok .fb{color:var(--free)}.wd.no .fb{color:var(--busy)}
+.wd .btn{grid-column:1/-1;justify-self:start}
+.tl.mini{height:18px;border-radius:6px}
+.tl.mini i{top:2px;bottom:2px;padding:0;border-radius:4px}
+
 /* ---------- login ---------- */
 .login{min-height:100vh;display:grid;place-items:center;padding:20px;background:
   radial-gradient(900px 500px at 80% 0%,rgba(200,160,74,.22),transparent 60%),
@@ -320,6 +350,13 @@ const FB = CONFIG.firebase.apiKey && !CONFIG.firebase.apiKey.startsWith('YOUR');
 /* ------------------------------ i18n ------------------------------ */
 const T = {
 ar:{
+  nWhere:'فين فاضي؟', whereT:'فين فاضي؟', whereS:'شوف الأماكن الفاضية في أي مبنى أو دور.', wModeTime:'في وقت محدد', wModeAny:'أي ميعاد (الأسبوع كله)',
+  wDateHint:'اختر تاريخاً، ولو ماختارتش بيظهر الفاضي الآن', wNow:'الآن', wMinL:'أقل مدة فاضية', wAnyDur:'أي مدة', wAllPlaces:'كل الأماكن', wNoRes:'لا توجد أماكن فاضية بهذه المواصفات',
+  wFreeFull:'فاضية طوال اليوم', wFreeRest:'فاضية بقية اليوم', wBusyFull:'لا يوجد وقت فاضي', wBook:'احجز', wFreeAt:'الأماكن الفاضية', wWeekOf:'أسبوع',
+  bldL:'المبنى', bldMain:'مبنى الخدمات', addBldT:'إضافة مبنى جديد', bldNameAr:'اسم المبنى بالعربي', bldNameEn:'اسم المبنى بالإنجليزي', floorsN:'عدد الأدوار', bldAdded:'تمت إضافة المبنى',
+  editBld:'تعديل المبنى', confDelBld:'سيتم حذف المبنى وكل أماكنه وحجوزاتها. متأكد؟', needBldName:'اكتب اسم المبنى', noFloor:'قاعات بدون دور', noFloorS:'قاعة أو صالة مستقلة ليست في دور معين', buildingsT:'المباني',
+  qaa:'قاعة', recDates:'أيام محددة', recDatesS:'اختر الأيام من التقويم (مثلاً 3 أيام)', pickDates:'اختر الأيام من التقويم', needDates:'اختر يوماً واحداً على الأقل من التقويم', datesN:n=>`${n} أيام محددة`,
+  addPlaceT:'إضافة غرفة / صالة / قاعة', placesTitle:'الأماكن',
   brand:'مبنى الخدمات',
   fl1:'الدور الأول',fl2:'الدور الثاني',fl3:'الدور الثالث',fl4:'الدور الرابع',fl5:'الدور الخامس',fl6:'الدور السادس',fs5:'المشغل',fs6:'البرجولة',
   loginT:'أهلاً بك', loginS:'ادخل كلمة السر للإدارة، أو ادخل كزائر لمعرفة الأماكن الفاضية وإرسال طلب حجز.', pw:'كلمة السر', enter:'دخول الإدارة', loginViewer:'دخول كزائر', loginViewerS:'عرض أو طلب حجز', or:'أو',
@@ -360,6 +397,13 @@ ar:{
   dataT:'البيانات', dataS:'نسخة احتياطية وتنظيف.', export:'تحميل نسخة احتياطية', clearOldNow:'حذف الحجوزات المنتهية الآن', wipe:'حذف كل الحجوزات', confWipe:'حذف كل الحجوزات نهائياً؟ لا يمكن التراجع.', confClear:'حذف كل الحجوزات المنتهية؟', dangerT:'منطقة الخطر'
 },
 en:{
+  nWhere:'Where is free?', whereT:'Where is free?', whereS:'See free places in any building or floor.', wModeTime:'At a specific time', wModeAny:'Any time (whole week)',
+  wDateHint:'Pick a date, or leave it empty to see what is free right now', wNow:'Now', wMinL:'Minimum free time', wAnyDur:'Any length', wAllPlaces:'All places', wNoRes:'No free places match',
+  wFreeFull:'Free all day', wFreeRest:'Free for the rest of the day', wBusyFull:'No free time', wBook:'Book', wFreeAt:'Free places', wWeekOf:'Week of',
+  bldL:'Building', bldMain:'Services Building', addBldT:'Add a new building', bldNameAr:'Building name (Arabic)', bldNameEn:'Building name (English)', floorsN:'Number of floors', bldAdded:'Building added',
+  editBld:'Edit building', confDelBld:'This deletes the building with all its places and their bookings. Continue?', needBldName:'Enter the building name', noFloor:'Halls without a floor', noFloorS:'A standalone hall or room that is not on a specific floor', buildingsT:'Buildings',
+  qaa:'Auditorium', recDates:'Specific days', recDatesS:'Pick the days from the calendar (e.g. 3 days)', pickDates:'Pick days from the calendar', needDates:'Pick at least one day from the calendar', datesN:n=>`${n} specific days`,
+  addPlaceT:'Add a room / hall / auditorium', placesTitle:'Places',
   brand:'Services Building',
   fl1:'First Floor',fl2:'Second Floor',fl3:'Third Floor',fl4:'Fourth Floor',fl5:'Fifth Floor',fl6:'Sixth Floor',fs5:'Workshop',fs6:'Pergola',
   loginT:'Welcome', loginS:'Enter the password for admin access, or continue as a visitor to see free places and send a booking request.', pw:'Password', enter:'Admin sign in', loginViewer:'Continue as visitor', loginViewerS:'view or request', or:'or',
@@ -399,7 +443,7 @@ en:{
 }};
 
 /* ------------------------------ settings & time ------------------------------ */
-const DEFAULTS={churchAr:'كنيسة جورجيوس',churchEn:'Georgios Church',dayStart:7,dayEnd:24,step:30,autoClean:true,allowRequests:true,tz:'Africa/Cairo'};
+const DEFAULTS={churchAr:'كنيسة جورجيوس',churchEn:'Georgios Church',dayStart:7,dayEnd:24,step:30,autoClean:true,allowRequests:true,tz:'Africa/Cairo',buildings:[]};
 let ST={...DEFAULTS};
 let DAY_START=420, DAY_END=1440, SPAN=1020;
 function applySettings(){
@@ -429,7 +473,7 @@ const DOW_ORDER=[6,0,1,2,3,4,5];
 const uid=()=>Math.random().toString(36).slice(2,10)+Date.now().toString(36).slice(-3);
 
 const S={lang:localStorage.getItem('g_lang')||'ar',role:null,tab:'f1',sub:'req',hist:[],date:today(),time:'now',filter:'all',
-  book:null,bq:{floor:'all',q:''},rf:{floor:1,type:'room',ar:'',en:'',cap:''},err:'',ready:false,modal:null,lastReq:null,lastMin:-1};
+  book:null,bq:{floor:'all',q:''},rf:{bld:'main',floor:1,type:'room',ar:'',en:'',cap:''},bld:'main',bf:{ar:'',en:'',n:3},wh:{mode:'time',date:'',time:'now',flt:'all',min:30,week:today()},err:'',ready:false,modal:null,lastReq:null,lastMin:-1};
 const DATA={rooms:[],bookings:[],requests:[],loaded:false};
 const t=(k,...a)=>{const v=T[S.lang][k]??T.ar[k]??k;return typeof v==='function'?v(...a):v};
 const churchName=()=>S.lang==='ar'?ST.churchAr:ST.churchEn;
@@ -441,11 +485,33 @@ const hourLbl=m=>{const h=Math.floor(m/60)%24,pm=h>=12,h12=h%12||12;return h12+(
 const loc=()=>S.lang==='ar'?'ar-EG-u-nu-latn':'en-GB';
 const fmtD=(s,o)=>new Intl.DateTimeFormat(loc(),o).format(parseD(s));
 const dayName=(n,long)=>new Intl.DateTimeFormat(loc(),{weekday:long?'long':'short'}).format(new Date(2024,0,7+n,12));
-const floorName=n=>t('fl'+n)+(n>=5?` (${t('fs'+n)})`:'');
+const MAIN_B={id:'main',nameAr:'مبنى الخدمات',nameEn:'Services Building',floors:6,main:true};
+const allBuildings=()=>[MAIN_B,...(ST.buildings||[])];
+const bById=id=>allBuildings().find(b=>b.id===id)||MAIN_B;
+const bName=b=>(S.lang==='ar'?(b.nameAr||b.nameEn):(b.nameEn||b.nameAr))||'—';
+const multiB=()=>allBuildings().length>1;
+const ORD_AR=['الأول','الثاني','الثالث','الرابع','الخامس','السادس','السابع','الثامن','التاسع','العاشر','الحادي عشر','الثاني عشر'];
+const floorsOf=bid=>[...Array.from({length:bById(bid).floors||1},(_,i)=>i+1),0];
+function floorLbl(bid,n){
+  if(n===0)return t('noFloor');
+  if(bid==='main'&&n<=6)return t('fl'+n);
+  return S.lang==='ar'?`الدور ${ORD_AR[n-1]||n}`:`Floor ${n}`;
+}
+const floorSub=(bid,n)=>bid==='main'&&(n===5||n===6)?t('fs'+n):'';
+const floorFull=(bid,n)=>floorLbl(bid,n)+(floorSub(bid,n)?` (${floorSub(bid,n)})`:'');
+const whereLbl=(bid,n)=>(multiB()?bName(bById(bid))+' — ':'')+floorFull(bid,n);
+const roomWhere=r=>whereLbl(r.buildingId,r.floor);
+const floorName=n=>floorFull('main',n);
 const roomName=r=>(S.lang==='ar'?(r.nameAr||r.nameEn):(r.nameEn||r.nameAr))||'—';
-const roomSub=r=>(r.type==='hall'?t('hall'):t('room'))+(r.cap?` · ${t('cap',r.cap)}`:'');
-const byName=(a,b)=>(a.type===b.type?0:a.type==='hall'?-1:1)||roomName(a).localeCompare(roomName(b),loc(),{numeric:true});
+const typeLbl=r=>r.type==='hall'?t('hall'):r.type==='qaa'?t('qaa'):t('room');
+const roomSub=r=>typeLbl(r)+(r.cap?` · ${t('cap',r.cap)}`:'');
+const rIcon=r=>r.type==='room'?I.door:I.hall;
+const TYPE_RANK={hall:0,qaa:1,room:2};
+const byName=(a,b)=>((TYPE_RANK[a.type]??2)-(TYPE_RANK[b.type]??2))||roomName(a).localeCompare(roomName(b),loc(),{numeric:true});
+const normRoom=r=>({...r,buildingId:r.buildingId||'main',floor:(r.floor??1)});
+const matchFlt=(r,f)=>!f||f==='all'||f===r.buildingId||f===`${r.buildingId}|${r.floor}`;
 const toast=m=>{const el=$('#toast');el.innerHTML=`<div>${esc(m)}</div>`;clearTimeout(toast.h);toast.h=setTimeout(()=>el.innerHTML='',2800)};
+
 const canReq=()=>S.role==='admin'||(S.role==='viewer'&&ST.allowRequests);
 const roomById=id=>DATA.rooms.find(r=>r.id===id);
 
@@ -465,14 +531,23 @@ const I={
  chev:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>',
  roof:'<svg class="roof" viewBox="0 0 244 64"><path d="M0 62 122 20 244 62Z" fill="#1f336b"/><path d="M122 2v22M113 10h18" stroke="#c8a04a" stroke-width="3.5" stroke-linecap="round"/></svg>'
 };
+I.search='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
 const sm=(ic)=>ic.replace(/width="19" height="19"/,'width="15" height="15"');
 
 /* ------------------------------ booking logic ------------------------------ */
 // booking: {id, roomIds:[], title, notes, by, days:[0-6], start, end (min), allDay, startDate, endDate|null, rec, exceptions:[iso]}
-const norm=b=>({...b,roomIds:b.roomIds||(b.roomId?[b.roomId]:[]),exceptions:b.exceptions||[],days:b.days||[]});
-const occursOn=(b,d)=>d>=b.startDate&&(!b.endDate||d<=b.endDate)&&b.days.includes(dow(d))&&!b.exceptions.includes(d);
+const norm=b=>({...b,roomIds:b.roomIds||(b.roomId?[b.roomId]:[]),exceptions:b.exceptions||[],days:b.days||[],dates:b.dates||null});
+const occursOn=(b,d)=>{
+  if((b.exceptions||[]).includes(d))return false;
+  if(b.dates)return b.dates.includes(d);
+  return d>=b.startDate&&(!b.endDate||d<=b.endDate)&&b.days.includes(dow(d));
+};
 function conflicts(a,b){
   if(!(a.start<b.end&&b.start<a.end))return false;
+  if(a.dates||b.dates){
+    const [x,y]=a.dates?[a,b]:[b,a];
+    return x.dates.some(d=>!(x.exceptions||[]).includes(d)&&occursOn(y,d));
+  }
   const shared=a.days.filter(x=>b.days.includes(x)); if(!shared.length)return false;
   const lo=a.startDate>b.startDate?a.startDate:b.startDate;
   const ea=a.endDate||'9999-12-31', eb=b.endDate||'9999-12-31', hi=ea<eb?ea:eb;
@@ -482,19 +557,40 @@ function conflicts(a,b){
 }
 const dayBookings=(roomId,d)=>DATA.bookings.filter(b=>b.roomIds.includes(roomId)&&occursOn(b,d)).sort((a,b)=>a.start-b.start);
 function coversDay(bs){let c=DAY_START;for(const b of bs){if(b.start<=c)c=Math.max(c,b.end)}return c>=DAY_END}
-const curT=()=>S.time==='now'?nowMin():S.time;
-function roomState(r){
-  const bs=dayBookings(r.id,S.date);
-  if(S.time==='all'){
+const tmNow=tm=>tm==='now'?nowMin():tm;
+const curT=()=>tmNow(S.time);
+function roomStateAt(r,date,time){
+  const bs=dayBookings(r.id,date);
+  if(time==='all'){
     const full=bs.some(b=>b.allDay)||coversDay(bs);
     return {st:bs.length?(full?'busy':'partial'):'free',bs,cur:null,next:null};
   }
-  const tt=curT();
+  const tt=tmNow(time);
   const cur=bs.find(b=>tt>=b.start&&tt<b.end)||null, next=bs.find(b=>b.start>tt)||null;
   return {st:cur?'busy':'free',bs,cur,next};
 }
-const recText=b=>({forever:t('recForever'),month:t('recMonth'),custom:t('recCustom'),week:t('recWeek')}[b.rec]||t('recWeek'));
-function occCount(b){ if(!b.endDate)return 99; let n=0; for(let d=b.startDate;d<=b.endDate&&n<3;d=addDays(d,1))if(occursOn(b,d))n++; return n}
+const roomState=r=>roomStateAt(r,S.date,S.time);
+function freeBlocks(r,date,minDur){
+  const bs=dayBookings(r.id,date);
+  const lo=date===today()?Math.max(DAY_START,nowMin()):DAY_START;
+  const busy=bs.map(b=>[Math.max(b.start,DAY_START),Math.min(b.end,DAY_END)]).filter(x=>x[1]>x[0]).sort((a,b)=>a[0]-b[0]);
+  const out=[]; let c=lo;
+  for(const [s,e] of busy){ if(e<=c)continue; if(s-c>=minDur)out.push([c,s]); c=Math.max(c,e); }
+  if(DAY_END-c>=minDur)out.push([c,DAY_END]);
+  return {out,bs,lo};
+}
+const recText=b=>({forever:t('recForever'),month:t('recMonth'),custom:t('recCustom'),dates:t('recDates'),week:t('recWeek')}[b.rec]||t('recWeek'));
+function occCount(b){
+  if(b.dates)return b.dates.filter(d=>!(b.exceptions||[]).includes(d)).length;
+  if(!b.endDate)return 99; let n=0; for(let d=b.startDate;d<=b.endDate&&n<3;d=addDays(d,1))if(occursOn(b,d))n++; return n;
+}
+function bkWhen(b){
+  const sep=S.lang==='ar'?'، ':', ';
+  if(b.dates)return {days:b.dates.slice().sort().map(d=>fmtD(d,{weekday:'short',day:'numeric',month:'short'})).join(sep),rng:''};
+  const days=(b.days||[]).slice().sort((x,y)=>DOW_ORDER.indexOf(x)-DOW_ORDER.indexOf(y)).map(d=>dayName(d)).join(sep);
+  const rng=b.endDate?t('range',fmtD(b.startDate,{day:'numeric',month:'short'}),fmtD(b.endDate,{day:'numeric',month:'short'})):t('until',t('forever'));
+  return {days,rng};
+}
 
 /* ------------------------------ data layer ------------------------------ */
 function seedRooms(){
@@ -530,7 +626,7 @@ function demoBackend(){
   const demoPw=()=>localStorage.getItem('g_demo_pw')||CONFIG.DEMO_PASSWORD;
   const save=()=>{
     localStorage.setItem(KEY,JSON.stringify(d));
-    setST(d.settings); DATA.rooms=[...d.rooms]; DATA.bookings=d.bookings.map(norm); DATA.requests=[...d.requests]; DATA.loaded=true;
+    setST(d.settings); DATA.rooms=d.rooms.map(normRoom); DATA.bookings=d.bookings.map(norm); DATA.requests=[...d.requests]; DATA.loaded=true;
     afterRequests(); render();
   };
   return {
@@ -562,7 +658,7 @@ async function firebaseBackend(){
   let gotR=false,gotB=false,unsubReq=null;
   const check=()=>{if(gotR&&gotB)DATA.loaded=true;render()};
   const onErr=e=>{console.error(e);DATA.loadErr=(e&&e.code)||'error';toast(t('netErr'));render()};
-  F.onSnapshot(F.collection(db,'rooms'),s=>{DATA.rooms=s.docs.map(x=>({id:x.id,...x.data()}));gotR=true;check()},onErr);
+  F.onSnapshot(F.collection(db,'rooms'),s=>{DATA.rooms=s.docs.map(x=>normRoom({id:x.id,...x.data()}));gotR=true;check()},onErr);
   F.onSnapshot(F.collection(db,'bookings'),s=>{DATA.bookings=s.docs.map(x=>norm({id:x.id,...x.data()}));gotB=true;check()},onErr);
   F.onSnapshot(F.doc(db,'settings','main'),s=>{setST(s.exists()?s.data():{});render()},()=>{});
   H.onAuthStateChanged(auth,u=>{
@@ -618,14 +714,43 @@ async function autoClean(){
 }
 
 /* ------------------------------ views ------------------------------ */
-const endDateFor=B=>B.rec==='week'?weekEnd(B.date):B.rec==='month'?addDays(B.date,29):B.rec==='custom'?(B.date2<B.date?B.date:B.date2):null;
+const endDateFor=B=>B.rec==='dates'?(B.dates.length?B.dates.slice().sort().pop():B.date):B.rec==='week'?weekEnd(B.date):B.rec==='month'?addDays(B.date,29):B.rec==='custom'?(B.date2<B.date?B.date:B.date2):null;
 function fixDays(B){
+  if(B.rec==='dates')return;
   if(B.rec==='week'){const ws=weekStart(B.date);B.days=B.days.filter(d=>addDays(ws,DOW_ORDER.indexOf(d))>=B.date)}
   if(!B.days.length)B.days=[dow(B.date)];
 }
 function newBook(){
   const d=today(); const m=Math.floor(nowMin()/ST.step)*ST.step+ST.step;
-  return {date:d,date2:addDays(d,13),days:[dow(d)],start:clampStart(m),dur:60,allDay:false,rec:'week',rooms:[],title:'',notes:'',name:'',phone:''};
+  return {date:d,date2:addDays(d,13),days:[dow(d)],dates:[],cal:d.slice(0,7)+'-01',start:clampStart(m),dur:60,allDay:false,rec:'week',rooms:[],title:'',notes:'',name:'',phone:''};
+}
+function bookingFrom(B){
+  const base={start:B.allDay?0:B.start,end:B.allDay?1440:Math.min(B.start+B.dur,1440),allDay:B.allDay,rec:B.rec,exceptions:[]};
+  if(B.rec==='dates'){
+    const ds=[...new Set(B.dates)].sort();
+    return {...base,dates:ds,days:[...new Set(ds.map(dow))],startDate:ds[0]||B.date,endDate:ds[ds.length-1]||B.date};
+  }
+  return {...base,days:[...B.days].sort(),startDate:B.date,endDate:endDateFor(B)};
+}
+function startBooking(id,date,time){
+  S.book=newBook(); const B=S.book;
+  B.date=date;B.days=[dow(date)];B.rooms=[id];B.date2=addDays(date,13);B.cal=date.slice(0,7)+'-01';
+  if(time==='all')B.allDay=true; else B.start=clampStart(Math.floor(tmNow(time)/ST.step)*ST.step);
+  fixDays(B); go('book');
+}
+function calHTML(B){
+  const first=B.cal, fd=parseD(first), lead=(fd.getDay()+1)%7;      // الأسبوع يبدأ السبت
+  const dim=new Date(fd.getFullYear(),fd.getMonth()+1,0).getDate(), td=today();
+  let cells=''; for(let i=0;i<lead;i++)cells+='<i></i>';
+  for(let d=1;d<=dim;d++){
+    const iso=`${first.slice(0,7)}-${pad(d)}`;
+    cells+=`<button class="cd ${B.dates.includes(iso)?'on':''} ${iso===td?'td':''}" ${iso<td?'disabled':''} data-act="calDay" data-v="${iso}">${d}</button>`;
+  }
+  const heads=DOW_ORDER.map(d=>`<b>${dayName(d)}</b>`).join('');
+  const title=new Intl.DateTimeFormat(loc(),{month:'long',year:'numeric'}).format(fd);
+  const sel=B.dates.slice().sort().map(d=>`<button class="tag g" data-act="calDay" data-v="${d}" title="×">${fmtD(d,{weekday:'short',day:'numeric',month:'short'})} ×</button>`).join(' ');
+  return `<div class="cal"><div class="calh"><button class="wn pv" style="height:34px" data-act="calNav" data-v="-1">${I.chev}</button><span>${esc(title)}</span><button class="wn nx" style="height:34px" data-act="calNav" data-v="1">${I.chev}</button></div>
+    <div class="calg">${heads}${cells}</div>${sel?`<div class="calsel">${sel}</div>`:''}</div>`;
 }
 const clampStart=m=>Math.min(Math.max(m,DAY_START),DAY_END-ST.step);
 const timeOpts=(sel,extra)=>{
@@ -666,46 +791,62 @@ function topbar(){
   </div></header>`;
 }
 function side(){
+  const bld=bById(S.bld);
+  const sw=multiB()?`<div class="bsw">${allBuildings().map(b=>`<button class="bs ${b.id===S.bld?'on':''}" data-act="setBld" data-v="${b.id}">${esc(bName(b))}</button>`).join('')}</div>`:'';
+  const roomsOf=n=>DATA.rooms.filter(r=>r.buildingId===S.bld&&r.floor===n).sort(byName);
+  const fl=(n,cls)=>{
+    const dots=roomsOf(n).map(r=>{const s=roomState(r).st;return `<i class="${s==='busy'?'b':s==='partial'?'p':''}"></i>`}).join('');
+    const sub=floorSub(S.bld,n);
+    return `<button class="fl ${S.tab==='f'+n?'on':''} ${cls||''}" data-act="tab" data-v="f${n}">
+      <span class="no">${n||'•'}</span><span class="nm">${floorLbl(S.bld,n)}${sub?`<small>${sub}</small>`:''}</span><span class="dots">${dots}</span></button>`;
+  };
   let tower=I.roof;
-  for(let n=6;n>=1;n--){
-    const rooms=DATA.rooms.filter(r=>r.floor===n).sort(byName);
-    const dots=rooms.map(r=>{const s=roomState(r).st;return `<i class="${s==='busy'?'b':s==='partial'?'p':''}"></i>`}).join('');
-    tower+=`<button class="fl ${S.tab==='f'+n?'on':''} ${n===6?'pg':''}" data-act="tab" data-v="f${n}">
-      <span class="no">${n}</span><span class="nm">${t('fl'+n)}${n>=5?`<small>${t('fs'+n)}</small>`:''}</span><span class="dots">${dots}</span></button>`;
-  }
+  for(let n=bld.floors;n>=1;n--)tower+=fl(n,(S.bld==='main'&&n===6)?'pg':'');
+  if(S.role==='admin'||roomsOf(0).length)tower+=fl(0,'pg');
   tower+='<div class="ground"></div>';
   const mi=(id,ic,lb,badge)=>`<button class="mi ${S.tab===id?'on':''}" data-act="tab" data-v="${id}">${ic}${lb}${badge?`<span class="nb">${badge}</span>`:''}</button>`;
-  let menu='';
-  if(S.role==='admin')menu=`<nav class="menu"><h3>${t('menu')}</h3>${mi('book',I.plus,t('nBook'))}${mi('bookings',I.list,t('nList'))}${mi('rooms',I.build,t('nRooms'))}${mi('settings',I.gear,t('nSet'),DATA.requests.length)}</nav>`;
-  else if(ST.allowRequests)menu=`<nav class="menu"><h3>${t('menuV')}</h3>${mi('book',I.plus,t('nReq'))}</nav>`;
-  return `<aside class="side"><nav class="tower">${tower}</nav>${menu}</aside>`;
+  let menu=`<nav class="menu"><h3>${S.role==='admin'?t('menu'):t('menuV')}</h3>${mi('where',I.search,t('nWhere'))}`;
+  if(S.role==='admin')menu+=mi('book',I.plus,t('nBook'))+mi('bookings',I.list,t('nList'))+mi('rooms',I.build,t('nRooms'))+mi('settings',I.gear,t('nSet'),DATA.requests.length);
+  else if(ST.allowRequests)menu+=mi('book',I.plus,t('nReq'));
+  menu+='</nav>';
+  return `<aside class="side">${sw}<nav class="tower">${tower}</nav>${menu}</aside>`;
 }
 
-function freePanel(){
+function freeGroups(date,time,flt){
   const groups=[]; let total=0;
-  for(let n=1;n<=6;n++){
-    const fr=DATA.rooms.filter(r=>r.floor===n).sort(byName).map(r=>({r,s:roomState(r)})).filter(x=>x.s.st==='free');
-    if(fr.length){groups.push([n,fr]);total+=fr.length}
+  for(const b of allBuildings())for(const n of floorsOf(b.id)){
+    const fr=DATA.rooms.filter(r=>r.buildingId===b.id&&r.floor===n&&matchFlt(r,flt)).sort(byName)
+      .map(r=>({r,s:roomStateAt(r,date,time)})).filter(x=>x.s.st==='free');
+    if(fr.length){groups.push([b.id,n,fr]);total+=fr.length}
   }
+  return {groups,total};
+}
+function freeRows(groups,date,time){
+  let h='';
+  for(const [bid,n,fr] of groups){
+    h+=`<div class="fg"><div class="fn">${esc(whereLbl(bid,n))}</div><div class="fcs">`+fr.map(({r,s})=>{
+      const tail=time==='all'?t('allS'):(s.next?t('untilS',fmtT(s.next.start)):t('restS'));
+      return `<button class="fc" data-act="freeGo" data-id="${r.id}" data-b="${bid}" data-f="${n}" data-date="${date}" data-time="${time}">${sm(rIcon(r))}${esc(roomName(r))}<small>${tail}</small></button>`}).join('')+'</div></div>';
+  }
+  return h;
+}
+function freePanel(){
+  const {groups,total}=freeGroups(S.date,S.time,'all');
   const hint=S.role==='admin'?t('freeHintA'):canReq()?t('freeHintV'):t('freeHintN');
-  let h=`<section class="fpanel"><h2>${t('freeT')} <b>${total}</b></h2><div class="hint">${total?hint:t('noneFree')}</div>`;
-  for(const [n,fr] of groups){
-    h+=`<div class="fg"><div class="fn">${t('fl'+n)}${n>=5?` (${t('fs'+n)})`:''}</div><div class="fcs">`+fr.map(({r,s})=>{
-      const tail=S.time==='all'?t('allS'):(s.next?t('untilS',fmtT(s.next.start)):t('restS'));
-      return `<button class="fc" data-act="freeGo" data-id="${r.id}" data-f="${n}">${r.type==='hall'?sm(I.hall):sm(I.door)}${esc(roomName(r))}<small>${tail}</small></button>`}).join('')+'</div></div>';
-  }
-  return h+'</section>';
+  return `<section class="fpanel"><h2>${t('freeT')} <b>${total}</b></h2><div class="hint">${total?hint:t('noneFree')}</div>${freeRows(groups,S.date,S.time)}</section>`;
 }
 
 function floorView(n){
   if(!DATA.loaded)return DATA.loadErr?`<div class="empty"><b>${t('loadErr')}</b><div dir="ltr" style="margin-top:8px;font-size:13px">${esc(DATA.loadErr)}</div></div>`:`<div class="load">…</div>`;
-  const rooms=DATA.rooms.filter(r=>r.floor===n).sort(byName);
+  const bld=bById(S.bld);
+  const rooms=DATA.rooms.filter(r=>r.buildingId===S.bld&&r.floor===n).sort(byName);
   const items=rooms.map(r=>({r,s:roomState(r)}));
   const nf=items.filter(x=>x.s.st==='free').length, nb=items.length-nf;
   const live=S.date===today()&&S.time==='now';
   const when=fmtD(S.date,{weekday:'long',day:'numeric',month:'long'})+' · '+(S.time==='all'?t('allDay'):fmtT(curT()));
-  let h=`<div class="head">${backBtn()}<div><h1>${t('fl'+n)}${n>=5?` <em>— ${t('fs'+n)}</em>`:''}</h1>
-    <p>${live?`<span class="tag g">${t('live')}</span> `:''}${esc(when)}</p></div><div style="flex:1"></div>
+  const fsub=floorSub(S.bld,n);
+  let h=`<div class="head">${backBtn()}<div><h1>${floorLbl(S.bld,n)}${fsub?` <em>— ${fsub}</em>`:''}</h1>
+    <p>${multiB()?`<span class="tag">${esc(bName(bld))}</span> `:''}${live?`<span class="tag g">${t('live')}</span> `:''}${esc(when)}</p></div><div style="flex:1"></div>
     ${live?'':`<button class="btn gold sm" data-act="now">${t('backNow')}</button>`}</div>`;
   h+=freePanel();
   const ws=weekStart(S.date), we=addDays(ws,6), td=today();
@@ -713,12 +854,12 @@ function floorView(n){
   for(let i=0;i<7;i++){const d=addDays(ws,i);
     chips+=`<button class="dc ${S.date===d?'on':''} ${d===td?'td':''}" data-act="date" data-v="${d}"><small>${d===td?t('today'):dayName(dow(d))}</small><b>${parseD(d).getDate()}</b></button>`}
   h+=`<div class="ctrl"><div><label class="l">${t('day')}</label>
-      <div class="week"><button class="wn" data-act="weekNav" data-v="-7" title="${t('prevW')}">${I.chev}</button><div class="days">${chips}</div><button class="wn" data-act="weekNav" data-v="7" title="${t('nextW')}" style="transform:scaleX(-1)">${I.chev}</button></div>
+      <div class="week"><button class="wn pv" data-act="weekNav" data-v="-7" title="${t('prevW')}">${I.chev}</button><div class="days">${chips}</div><button class="wn nx" data-act="weekNav" data-v="7" title="${t('nextW')}">${I.chev}</button></div>
       <div class="wl">${fmtD(ws,{day:'numeric',month:'long'})} – ${fmtD(we,{day:'numeric',month:'long'})}</div></div>
     <div><label class="l">${t('pickDate')}</label><input class="fld" type="date" value="${S.date}" data-ch="date"></div>
     <div><label class="l">${t('time')}</label><select class="fld" data-ch="time">${timeOpts(S.time,true)}</select></div></div>`;
   if(!rooms.length){
-    const note=n===5?t('noRooms5'):n===6?t('noRooms6'):t('noRooms');
+    const note=S.bld==='main'&&n===5?t('noRooms5'):S.bld==='main'&&n===6?t('noRooms6'):t('noRooms');
     return h+`<div class="empty">${I.build.replace('width="20" height="20"','width="46" height="46"')}<b>${note}</b>
       ${S.role==='admin'?`<div>${t('noRoomsHint')}</div><div style="margin-top:14px"><button class="btn" data-act="tab" data-v="rooms">${I.plus}${t('goRooms')}</button></div>`:''}</div>`;
   }
@@ -749,7 +890,7 @@ function floorView(n){
       <button class="btn sm gold" data-act="bookRoom" data-id="${r.id}">${I.plus}${t('nBook')}</button></div>`;
     else if(canReq()&&s.st!=='busy')acts=`<div class="acts"><button class="btn sm gold" data-act="bookRoom" data-id="${r.id}">${I.plus}${t('nReq')}</button></div>`;
     h+=`<div class="row ${s.st}"><div><span class="chip">${chip}</span></div>
-      <div><div class="rn">${r.type==='hall'?I.hall:I.door}${esc(roomName(r))}</div><div class="rs">${esc(roomSub(r))}</div><div class="det">${det}</div></div>
+      <div><div class="rn">${rIcon(r)}${esc(roomName(r))}</div><div class="rs">${esc(roomSub(r))}</div><div class="det">${det}</div></div>
       <div class="tlc"><div class="tl" style="--hrs:${SPAN/60}">${span}${mk}</div></div>${acts}</div>`;
   }
   return h+'</div>';
@@ -759,9 +900,9 @@ function bookView(){
   const isReq=S.role!=='admin';
   if(isReq&&!ST.allowRequests)return `${hd(t('reqT'))}<div class="empty"><b>${t('reqOff')}</b></div>`;
   if(!S.book)S.book=newBook();
-  const B=S.book;
-  const end=endDateFor(B);
-  const c={days:[...B.days],start:B.allDay?0:B.start,end:B.allDay?1440:Math.min(B.start+B.dur,1440),allDay:B.allDay,startDate:B.date,endDate:end,rec:B.rec};
+  const B=S.book, isDates=B.rec==='dates';
+  const bf=bookingFrom(B);
+  const c={...bf};
   const durs=[[30,'min30'],[60,'hr1'],[90,'hr15'],[120,'hr2'],[180,'hr3'],[240,'hr4']];
   const ws=weekStart(B.date);
   let dsel=''; DOW_ORDER.forEach((d,i)=>{
@@ -769,43 +910,55 @@ function bookView(){
     dsel+=`<button class="dc ${B.days.includes(d)?'on':''}" ${dis?'disabled':''} data-act="toggleDay" data-v="${d}">${dayName(d)}${B.rec==='week'?`<small>${parseD(dd).getDate()}</small>`:''}</button>`});
   const rc=(k,a,b)=>`<button class="rc ${B.rec===k?'on':''}" data-act="setRec" data-v="${k}"><b>${t(a)}</b><small>${t(b)}</small></button>`;
   const sd=fmtD(c.startDate,{day:'numeric',month:'short'});
-  const rangeTxt=end?t('range',sd,fmtD(end,{day:'numeric',month:'short'})):`${sd} → ${t('forever')}`;
+  const rangeTxt=isDates?t('datesN',B.dates.length):(c.endDate?t('range',sd,fmtD(c.endDate,{day:'numeric',month:'short'})):`${sd} → ${t('forever')}`);
   const timeTxt=B.allDay?t('allDay'):`${fmtT(c.start)} – ${fmtT(c.end)}`;
   const sep=S.lang==='ar'?'، ':', ';
+  const whenSel=isDates?`<div class="f"><label>${t('pickDates')}</label>${calHTML(B)}</div>`:
+    `<div class="f"><label>${t('startDate')}</label><input class="fld" type="date" value="${B.date}" data-ch="bdate"></div>
+    <div class="f"><label>${t('days')}</label><div class="dsel">${dsel}</div></div>`;
+  const dayTxt=isDates?(B.dates.length?bkWhen(c).days:'—'):B.days.slice().sort((a,b)=>DOW_ORDER.indexOf(a)-DOW_ORDER.indexOf(b)).map(d=>dayName(d,true)).join(sep);
   const form=`<div class="card"><h2>${t('when')}</h2>
-    <div class="f"><label>${t('startDate')}</label><input class="fld" type="date" value="${B.date}" data-ch="bdate"></div>
-    <div class="f"><label>${t('days')}</label><div class="dsel">${dsel}</div></div>
+    <div class="f"><label>${t('recT')}</label><div class="rec">${rc('week','recWeek','recWeekS')}${rc('dates','recDates','recDatesS')}${rc('month','recMonth','recMonthS')}${rc('custom','recCustom','recCustomS')}${rc('forever','recForever','recForeverS')}</div></div>
+    ${whenSel}
+    ${B.rec==='custom'?`<div class="f"><label>${t('toDate')}</label><input class="fld" type="date" min="${B.date}" value="${endDateFor(B)}" data-ch="bdate2"></div>`:''}
     <div class="f"><label>${t('from')}</label><select class="fld" data-ch="bstart" ${B.allDay?'disabled':''}>${timeOpts(B.start,false)}</select></div>
     <div class="f"><label>${t('dur')}</label><select class="fld" data-ch="bdur">${durs.map(([v,k])=>`<option value="${v}" ${!B.allDay&&B.dur===v?'selected':''}>${t(k)}</option>`).join('')}<option value="all" ${B.allDay?'selected':''}>${t('allDay')}</option></select></div>
-    <div class="f"><label>${t('recT')}</label><div class="rec">${rc('week','recWeek','recWeekS')}${rc('month','recMonth','recMonthS')}${rc('custom','recCustom','recCustomS')}${rc('forever','recForever','recForeverS')}</div></div>
-    ${B.rec==='custom'?`<div class="f"><label>${t('toDate')}</label><input class="fld" type="date" min="${B.date}" value="${end}" data-ch="bdate2"></div>`:''}
-    <div class="sum">${B.days.slice().sort((a,b)=>DOW_ORDER.indexOf(a)-DOW_ORDER.indexOf(b)).map(d=>dayName(d,true)).join(sep)} · ${timeTxt}<small>${recText(c)} — ${rangeTxt}</small></div></div>`;
-  let groups='';
-  const okRooms=new Set();
-  for(let n=1;n<=6;n++){
-    const rooms=DATA.rooms.filter(r=>r.floor===n).sort(byName);
-    const res=rooms.map(r=>({r,x:DATA.bookings.find(b=>b.roomIds.includes(r.id)&&conflicts(c,b))}));
+    <div class="sum">${dayTxt} · ${timeTxt}<small>${recText(c)} — ${rangeTxt}</small></div></div>`;
+  const noDays=isDates?!B.dates.length:!B.days.length;
+  let groups=''; const okRooms=new Set();
+  for(const b of allBuildings())for(const n of floorsOf(b.id)){
+    const rooms=DATA.rooms.filter(r=>r.buildingId===b.id&&r.floor===n).sort(byName);
+    if(!rooms.length)continue;
+    const res=rooms.map(r=>({r,x:noDays?null:DATA.bookings.find(bk=>bk.roomIds.includes(r.id)&&conflicts(c,bk))}));
     const nf=res.filter(o=>!o.x).length;
-    groups+=`<div class="fgrp"><h3>${floorName(n)} <small>${rooms.length?t('ofN',nf,rooms.length):t('noRoomsShort')}</small></h3>`;
-    if(rooms.length){
-      groups+='<div class="tiles">'+res.map(({r,x})=>{
-        const sel=B.rooms.includes(r.id)&&!x; if(!x)okRooms.add(r.id);
-        return x?`<div class="tile x"><b>${r.type==='hall'?I.hall:I.door}${esc(roomName(r))}</b><small>${esc(t('occupiedBy',x.title))}</small></div>`
-        :`<button class="tile ${sel?'sel':''}" data-act="pickRoom" data-id="${r.id}"><b>${r.type==='hall'?I.hall:I.door}${esc(roomName(r))}</b><small>${esc(roomSub(r))}</small>${sel?`<span class="ok">${I.check}</span>`:''}</button>`}).join('')+'</div>';
-    }
-    groups+='</div>';
+    groups+=`<div class="fgrp"><h3>${esc(whereLbl(b.id,n))} <small>${t('ofN',nf,rooms.length)}</small></h3><div class="tiles">`+res.map(({r,x})=>{
+      const sel=B.rooms.includes(r.id)&&!x; if(!x)okRooms.add(r.id);
+      return x?`<div class="tile x"><b>${rIcon(r)}${esc(roomName(r))}</b><small>${esc(t('occupiedBy',x.title))}</small></div>`
+      :`<button class="tile ${sel?'sel':''}" data-act="pickRoom" data-id="${r.id}"><b>${rIcon(r)}${esc(roomName(r))}</b><small>${esc(roomSub(r))}</small>${sel?`<span class="ok">${I.check}</span>`:''}</button>`}).join('')+'</div></div>';
   }
   B.rooms=B.rooms.filter(id=>okRooms.has(id));
   const picked=B.rooms.map(roomById).filter(Boolean);
-  const det=`<div class="card" style="margin-top:16px"><h2>${t('details')}</h2>${picked.length?`<div class="note" style="margin-bottom:10px">${picked.map(p=>`<span class="tag g">${esc(t('fl'+p.floor))} · ${esc(roomName(p))}</span>`).join(' ')}</div>
+  const det=`<div class="card" style="margin-top:16px"><h2>${t('details')}</h2>${picked.length?`<div class="note" style="margin-bottom:10px">${picked.map(p=>`<span class="tag g">${esc(roomWhere(p))} · ${esc(roomName(p))}</span>`).join(' ')}</div>
       ${isReq?`<div class="f"><label>${t('yourName')}</label><input class="fld" data-in="bname" value="${esc(B.name)}"></div>
       <div class="f"><label>${t('phone')}</label><input class="fld" type="tel" dir="ltr" data-in="bphone" value="${esc(B.phone)}"></div>`:''}
       <div class="f"><label>${t('title')}</label><input class="fld" data-in="btitle" value="${esc(B.title)}" placeholder="${esc(t('titlePh'))}"></div>
       <div class="f"><label>${t('notes')}</label><textarea class="fld" data-in="bnotes" placeholder="${esc(t('notesPh'))}">${esc(B.notes)}</textarea></div>
       <button class="btn gold" data-act="saveBook">${I.check}${isReq?t('sendReq'):t('save')}</button>`:`<div class="note">${t('pickRoomFirst')}</div>`}</div>`;
   return `${hd(isReq?t('reqT'):t('bookT'))}
-    <div class="two"><div>${form}</div><div><div class="card"><h2>${t('freeRoomsT')}</h2>${DATA.rooms.length?groups:`<div class="note">${t('noRooms')}</div>`}</div>${det}</div></div>`;
+    <div class="two"><div>${form}</div><div><div class="card"><h2>${t('freeRoomsT')}</h2>${groups||`<div class="note">${t('noRooms')}</div>`}</div>${det}</div></div>`;
 }
+
+const placeOpts=sel=>{
+  let o=`<option value="all">${t('wAllPlaces')}</option>`;
+  for(const b of allBuildings()){
+    if(multiB())o+=`<option value="${b.id}" ${sel===b.id?'selected':''}>${esc(bName(b))}</option>`;
+    for(const n of floorsOf(b.id)){
+      if(!DATA.rooms.some(r=>r.buildingId===b.id&&r.floor===n))continue;
+      const v=`${b.id}|${n}`; o+=`<option value="${v}" ${sel===v?'selected':''}>${esc(whereLbl(b.id,n))}</option>`;
+    }
+  }
+  return o;
+};
 
 function bookingsView(){
   const td=today();
@@ -814,44 +967,113 @@ function bookingsView(){
     return {b,rooms:b.roomIds.map(roomById).filter(Boolean),st};
   }).filter(x=>x.rooms.length);
   const q=S.bq.q.trim().toLowerCase();
-  const list=all.filter(x=>(S.bq.floor==='all'||x.rooms.some(r=>r.floor===+S.bq.floor))&&(!q||(x.b.title+' '+(x.b.notes||'')+' '+(x.b.by||'')+' '+x.rooms.map(roomName).join(' ')).toLowerCase().includes(q)))
-    .sort((a,b)=>(a.st==='old')-(b.st==='old')||a.rooms[0].floor-b.rooms[0].floor||a.b.start-b.b.start);
+  const list=all.filter(x=>x.rooms.some(r=>matchFlt(r,S.bq.floor))&&(!q||(x.b.title+' '+(x.b.notes||'')+' '+(x.b.by||'')+' '+x.rooms.map(roomName).join(' ')).toLowerCase().includes(q)))
+    .sort((a,b)=>(a.st==='old')-(b.st==='old')||(a.b.startDate<b.b.startDate?-1:1)||a.b.start-b.b.start);
   const nOld=all.filter(x=>x.st==='old').length;
-  const bar=`<div class="bar"><select class="fld" data-ch="bfloor"><option value="all">${t('allFloors')}</option>${[1,2,3,4,5,6].map(n=>`<option value="${n}" ${S.bq.floor==n?'selected':''}>${floorName(n)}</option>`).join('')}</select>
+  const bar=`<div class="bar"><select class="fld" data-ch="bfloor">${placeOpts(S.bq.floor)}</select>
     <input class="fld" id="bsearch" data-in="bsearch" value="${esc(S.bq.q)}" placeholder="${esc(t('search'))}" style="flex:1;min-width:180px">
     ${nOld?`<button class="btn ghost sm" data-act="clearOld">${I.trash}${t('clearOld')} (${nOld})</button>`:''}</div>`;
   if(!list.length)return `${hd(t('listT'))}${bar}<div class="empty">${I.list.replace('width="20" height="20"','width="46" height="46"')}<b>${t('noBookings')}</b>${t('noBookingsS')}</div>`;
   return `${hd(t('listT'),t('booksN',list.length))}${bar}<div class="list">`+list.map(({b,rooms,st})=>{
-    const sep=S.lang==='ar'?'، ':', ';
-    const days=b.days.slice().sort((x,y)=>DOW_ORDER.indexOf(x)-DOW_ORDER.indexOf(y)).map(d=>dayName(d)).join(sep);
-    const rng=b.endDate?t('range',fmtD(b.startDate,{day:'numeric',month:'short'}),fmtD(b.endDate,{day:'numeric',month:'short'})):t('until',t('forever'));
+    const w=bkWhen(b);
     return `<div class="bk ${st==='old'?'old':''}"><div><h3>${esc(b.title)}</h3><div class="m">
-      <span>${sm(rooms[0].type==='hall'?I.hall:I.door)} ${rooms.map(r=>esc(t('fl'+r.floor))+' · '+esc(roomName(r))).join(' + ')}</span>
-      <span>${esc(days)}</span><span>${b.allDay?t('allDay'):fmtT(b.start)+' – '+fmtT(b.end)}</span>
-      <span class="tag ${st==='old'?'o':st==='up'?'u':'g'}">${st==='old'?t('expired'):st==='up'?t('upcoming'):t('active')}</span><span class="tag">${recText(b)}</span><span>${esc(rng)}</span></div>
+      <span>${sm(rIcon(rooms[0]))} ${rooms.map(r=>esc(roomWhere(r))+' · '+esc(roomName(r))).join(' + ')}</span>
+      <span>${esc(w.days)}</span><span>${b.allDay?t('allDay'):fmtT(b.start)+' – '+fmtT(b.end)}</span>
+      <span class="tag ${st==='old'?'o':st==='up'?'u':'g'}">${st==='old'?t('expired'):st==='up'?t('upcoming'):t('active')}</span><span class="tag">${recText(b)}</span>${w.rng?`<span>${esc(w.rng)}</span>`:''}</div>
       ${b.by?`<div class="rs" style="margin-top:4px">${t('byL')}: ${esc(b.by)}</div>`:''}
       ${b.notes?`<div class="rs" style="margin-top:2px">${esc(b.notes)}</div>`:''}</div>
       <div class="acts"><button class="ic" title="${t('edit')}" data-act="editBooking" data-id="${b.id}">${I.edit}</button><button class="ic del" title="${t('del')}" data-act="delBooking" data-id="${b.id}">${I.trash}</button></div></div>`}).join('')+'</div>';
 }
 
+const floorOptsFor=(bid,sel)=>floorsOf(bid).map(n=>`<option value="${n}" ${sel===n?'selected':''}>${esc(floorFull(bid,n))}</option>`).join('');
+const typeOpts=sel=>['room','hall','qaa'].map(k=>`<option value="${k}" ${sel===k?'selected':''}>${t(k)}</option>`).join('');
+const bldOpts=sel=>allBuildings().map(b=>`<option value="${b.id}" ${sel===b.id?'selected':''}>${esc(bName(b))}</option>`).join('');
+
 function roomsView(){
-  const R=S.rf;
-  const form=`<div class="card" style="margin-bottom:18px"><h2>${t('addRoomT')}</h2><div class="frm">
-    <div><label class="lb">${t('floor')}</label><select class="fld" style="width:100%" data-ch="rffloor">${[1,2,3,4,5,6].map(n=>`<option value="${n}" ${R.floor===n?'selected':''}>${floorName(n)}</option>`).join('')}</select></div>
-    <div><label class="lb">${t('type')}</label><select class="fld" style="width:100%" data-ch="rftype"><option value="room" ${R.type==='room'?'selected':''}>${t('room')}</option><option value="hall" ${R.type==='hall'?'selected':''}>${t('hall')}</option></select></div>
+  const R=S.rf, BF=S.bf;
+  if(!allBuildings().some(b=>b.id===R.bld))R.bld='main';
+  if(!floorsOf(R.bld).includes(R.floor))R.floor=1;
+  const bform=`<div class="card" style="margin-bottom:18px"><h2>${t('addBldT')}</h2><div class="frm">
+    <div><label class="lb">${t('bldNameAr')}</label><input class="fld" style="width:100%" data-in="bf-ar" value="${esc(BF.ar)}"></div>
+    <div><label class="lb">${t('bldNameEn')}</label><input class="fld" style="width:100%" dir="ltr" data-in="bf-en" value="${esc(BF.en)}"></div>
+    <div><label class="lb">${t('floorsN')}</label><input class="fld" style="width:100%" type="number" min="1" max="12" data-in="bf-n" value="${esc(BF.n)}"></div>
+    <div><button class="btn gold" style="width:100%" data-act="addBld">${I.plus}${t('add')}</button></div></div>
+    ${(ST.buildings||[]).length?`<div style="margin-top:12px">${ST.buildings.map(b=>`<div class="rl">${I.build}<span class="n">${esc(bName(b))}<small>${b.floors} ${t('floorsN')}</small></span>
+      <button class="ic" title="${t('edit')}" data-act="editBld" data-id="${b.id}">${I.edit}</button><button class="ic del" title="${t('del')}" data-act="delBld" data-id="${b.id}">${I.trash}</button></div>`).join('')}</div>`:''}</div>`;
+  const form=`<div class="card" style="margin-bottom:18px"><h2>${t('addPlaceT')}</h2><div class="frm">
+    <div><label class="lb">${t('bldL')}</label><select class="fld" style="width:100%" data-ch="rfbld">${bldOpts(R.bld)}</select></div>
+    <div><label class="lb">${t('floor')}</label><select class="fld" style="width:100%" data-ch="rffloor">${floorOptsFor(R.bld,R.floor)}</select></div>
+    <div><label class="lb">${t('type')}</label><select class="fld" style="width:100%" data-ch="rftype">${typeOpts(R.type)}</select></div>
     <div><label class="lb">${t('nameAr')}</label><input class="fld" style="width:100%" data-in="rf-ar" value="${esc(R.ar)}"></div>
     <div><label class="lb">${t('nameEn')}</label><input class="fld" style="width:100%" dir="ltr" data-in="rf-en" value="${esc(R.en)}"></div>
     <div><label class="lb">${t('capL')}</label><input class="fld" style="width:100%" type="number" min="1" data-in="rf-cap" value="${esc(R.cap)}"></div>
     <div><button class="btn gold" style="width:100%" data-act="addRoom">${I.plus}${t('add')}</button></div></div></div>`;
-  let h=hd(t('roomsT'))+form;
+  let h=hd(t('roomsT'))+bform+form;
   if(!DATA.rooms.length)h+=`<div class="empty"><b>${t('noRooms')}</b>${t('seedS')}<div style="margin-top:14px"><button class="btn" data-act="seed">${I.plus}${t('seed')}</button></div></div>`;
-  for(let n=1;n<=6;n++){
-    const rooms=DATA.rooms.filter(r=>r.floor===n).sort(byName);
-    h+=`<div class="card" style="margin-bottom:14px"><h2 style="font-size:19px">${floorName(n)}</h2>`;
-    h+=rooms.length?rooms.map(r=>`<div class="rl">${r.type==='hall'?I.hall:I.door}<span class="n">${esc(roomName(r))}<small>${esc(roomSub(r))}</small></span>
-      <button class="ic" title="${t('edit')}" data-act="editRoom" data-id="${r.id}">${I.edit}</button><button class="ic del" title="${t('del')}" data-act="delRoom" data-id="${r.id}">${I.trash}</button></div>`).join(''):`<div class="note">${n===5?t('noRooms5'):n===6?t('noRooms6'):t('noRooms')}</div>`;
-    h+='</div>';
+  for(const b of allBuildings()){
+    if(multiB())h+=`<h2 style="font-size:22px;color:var(--ink);margin:18px 2px 10px">${esc(bName(b))}</h2>`;
+    for(const n of floorsOf(b.id)){
+      const rooms=DATA.rooms.filter(r=>r.buildingId===b.id&&r.floor===n).sort(byName);
+      if(n===0&&!rooms.length)continue;
+      h+=`<div class="card" style="margin-bottom:14px"><h2 style="font-size:19px">${esc(floorFull(b.id,n))}</h2>`;
+      h+=rooms.length?rooms.map(r=>`<div class="rl">${rIcon(r)}<span class="n">${esc(roomName(r))}<small>${esc(roomSub(r))}</small></span>
+        <button class="ic" title="${t('edit')}" data-act="editRoom" data-id="${r.id}">${I.edit}</button><button class="ic del" title="${t('del')}" data-act="delRoom" data-id="${r.id}">${I.trash}</button></div>`).join(''):`<div class="note">${b.id==='main'&&n===5?t('noRooms5'):b.id==='main'&&n===6?t('noRooms6'):t('noRooms')}</div>`;
+      h+='</div>';
+    }
   }
+  return h;
+}
+
+function whereView(){
+  const W=S.wh, td=today();
+  const pills=`<div class="pills"><button class="pl ${W.mode==='time'?'on':''}" data-act="whMode" data-v="time">${t('wModeTime')}</button><button class="pl ${W.mode==='any'?'on':''}" data-act="whMode" data-v="any">${t('wModeAny')}</button></div>`;
+  let h=hd(t('whereT'),t('whereS'))+pills;
+  if(W.mode==='time'){
+    const date=W.date||td;
+    const time=(W.time==='now'&&date!==td)?clampStart(Math.floor(nowMin()/ST.step)*ST.step):W.time;
+    const {groups,total}=freeGroups(date,time,W.flt);
+    const live=!W.date&&W.time==='now';
+    h+=`<div class="ctrl"><div><label class="l">${t('pickDate')}</label><input class="fld" type="date" value="${W.date}" data-ch="whdate"><div class="wl">${t('wDateHint')}</div></div>
+      <div><label class="l">${t('time')}</label><select class="fld" data-ch="whtime">${timeOpts(W.time,true)}</select></div>
+      <div><label class="l">${t('wAllPlaces')}</label><select class="fld" data-ch="whflt">${placeOpts(W.flt)}</select></div>
+      ${(W.date||W.time!=='now')?`<button class="btn gold sm" data-act="whClear">${t('wNow')}</button>`:''}</div>`;
+    const when=fmtD(date,{weekday:'long',day:'numeric',month:'long'})+' · '+(time==='all'?t('allDay'):fmtT(tmNow(time)));
+    h+=`<section class="fpanel"><h2>${t('wFreeAt')} <b>${total}</b></h2><div class="hint">${live?`<span class="tag g">${t('live')}</span> `:''}${esc(when)}${total&&canReq()?' · '+(S.role==='admin'?t('freeHintA'):t('freeHintV')):''}</div>
+      ${total?freeRows(groups,date,time):`<div class="note">${t('wNoRes')}</div>`}</section>`;
+    return h;
+  }
+  // أي ميعاد: الأسبوع كله
+  const ws=weekStart(W.week), we=addDays(ws,6);
+  const mins=[[30,'wAnyDur'],[60,'hr1'],[120,'hr2'],[180,'hr3']];
+  h+=`<div class="ctrl"><div><label class="l">${t('day')}</label><div class="week"><button class="wn pv" data-act="whWeek" data-v="-7" title="${t('prevW')}">${I.chev}</button>
+      <div class="wl" style="margin:0 8px;font-size:14px;color:var(--txt)">${t('wWeekOf')} ${fmtD(ws,{day:'numeric',month:'long'})} – ${fmtD(we,{day:'numeric',month:'long'})}</div>
+      <button class="wn nx" data-act="whWeek" data-v="7" title="${t('nextW')}">${I.chev}</button></div></div>
+    <div><label class="l">${t('wAllPlaces')}</label><select class="fld" data-ch="whflt">${placeOpts(W.flt)}</select></div>
+    <div><label class="l">${t('wMinL')}</label><select class="fld" data-ch="whmin">${mins.map(([v,k])=>`<option value="${v}" ${W.min===v?'selected':''}>${t(k)}</option>`).join('')}</select></div></div>`;
+  const days=[];for(let i=0;i<7;i++){const d=addDays(ws,i);if(d>=td)days.push(d)}
+  let any=false;
+  for(const b of allBuildings())for(const n of floorsOf(b.id)){
+    const rooms=DATA.rooms.filter(r=>r.buildingId===b.id&&r.floor===n&&matchFlt(r,W.flt)).sort(byName);
+    if(!rooms.length)continue;
+    let cards='';
+    for(const r of rooms){
+      let rows='',hasFree=false;
+      for(const d of days){
+        const fb=freeBlocks(r,d,W.min);
+        const full=!fb.bs.length&&fb.out.length===1&&fb.out[0][0]===fb.lo&&fb.out[0][1]===DAY_END;
+        if(fb.out.length)hasFree=true;
+        const txt=full?(d===td&&fb.lo>DAY_START?t('wFreeRest'):t('wFreeFull')):fb.out.length?fb.out.map(([s,e])=>`${fmtT(s)} – ${fmtT(e)}`).join(' · '):t('wBusyFull');
+        const segs=fb.bs.map(bk=>{const a=Math.max(bk.start,DAY_START),e=Math.min(bk.end,DAY_END);if(e<=a)return '';
+          return `<i style="inset-inline-start:${(a-DAY_START)/SPAN*100}%;width:${(e-a)/SPAN*100}%" title="${esc(bk.title)}"></i>`}).join('');
+        const go_=fb.out.length&&canReq()?`<button class="btn sm gold" data-act="bookAt" data-id="${r.id}" data-date="${d}" data-time="${full?'all':fb.out[0][0]}">${t('wBook')}</button>`:'<span></span>';
+        rows+=`<div class="wd ${fb.out.length?'ok':'no'}"><span class="dn">${dayName(dow(d))} ${parseD(d).getDate()}</span><div class="tl mini" style="--hrs:${SPAN/60}">${segs}</div><span class="fb">${txt}</span>${go_}</div>`;
+      }
+      if(!days.length||(W.min>30&&!hasFree&&false))continue;
+      cards+=`<div class="wcard"><div class="rn">${rIcon(r)}${esc(roomName(r))}</div><div class="rs">${esc(roomSub(r))}</div>${rows}</div>`;
+    }
+    if(cards){any=true;h+=`<h3 class="wh">${esc(whereLbl(b.id,n))}</h3><div class="wgrid">${cards}</div>`}
+  }
+  if(!any)h+=`<div class="empty"><b>${t('wNoRes')}</b></div>`;
   return h;
 }
 
@@ -864,12 +1086,11 @@ function settingsView(){
     if(!nr)return h+`<div class="empty"><b>${t('noReq')}</b></div>`;
     return h+'<div class="list">'+DATA.requests.map(q=>{
       const rooms=(q.roomIds||[]).map(roomById).filter(Boolean);
-      const days=(q.days||[]).slice().sort((x,y)=>DOW_ORDER.indexOf(x)-DOW_ORDER.indexOf(y)).map(d=>dayName(d)).join(sep);
-      const rng=q.endDate?t('range',fmtD(q.startDate,{day:'numeric',month:'short'}),fmtD(q.endDate,{day:'numeric',month:'short'})):t('until',t('forever'));
+      const w=bkWhen(q);const days=w.days,rng=w.rng;
       const created=q.createdAt?new Intl.DateTimeFormat(loc(),{day:'numeric',month:'short',hour:'numeric',minute:'2-digit'}).format(new Date(q.createdAt)):'';
       return `<div class="bk rq"><div><h3>${esc(q.title)}</h3><div class="m">
         <span><b>${t('reqFrom')}:</b> ${esc(q.name)}${q.phone?` · <span dir="ltr">${esc(q.phone)}</span>`:''}</span>
-        <span>${rooms.map(r=>esc(t('fl'+r.floor))+' · '+esc(roomName(r))).join(' + ')||'—'}</span>
+        <span>${rooms.map(r=>esc(roomWhere(r))+' · '+esc(roomName(r))).join(' + ')||'—'}</span>
         <span>${esc(days)}</span><span>${q.allDay?t('allDay'):fmtT(q.start)+' – '+fmtT(q.end)}</span><span class="tag">${recText(q)}</span><span>${esc(rng)}</span>${created?`<span>${esc(created)}</span>`:''}</div>
         ${q.notes?`<div class="rs" style="margin-top:4px">${esc(q.notes)}</div>`:''}</div>
         <div class="acts"><button class="btn sm grn" data-act="approveReq" data-id="${q.id}">${I.check}${t('approve')}</button><button class="btn sm red" data-act="rejectReq" data-id="${q.id}">${t('reject')}</button></div></div>`}).join('')+'</div>';
@@ -903,7 +1124,8 @@ function settingsView(){
 }
 
 function main(){
-  if(S.tab[0]==='f')return floorView(+S.tab.slice(1));
+  if(S.tab==='where')return whereView();
+  if(S.tab[0]==='f'){let n=+S.tab.slice(1);if(!(n>=0&&n<=bById(S.bld).floors))n=1;return floorView(n)}
   if(S.tab==='book'&&canReq())return bookView();
   if(S.role!=='admin')return floorView(1);
   return S.tab==='bookings'?bookingsView():S.tab==='rooms'?roomsView():S.tab==='settings'?settingsView():floorView(1);
@@ -914,6 +1136,7 @@ function render(){
   document.title=`${t('brand')} — ${churchName()}`;
   if(!S.ready){app.innerHTML='<div class="load">…</div>';return}
   if(!S.role){app.innerHTML=login();return}
+  if(!allBuildings().some(b=>b.id===S.bld))S.bld='main';
   app.innerHTML=topbar()+`<div class="grid">${side()}<main>${main()}</main></div>`;
   autoClean();
 }
@@ -979,24 +1202,26 @@ const A={
   weekNav(d){setDate(addDays(S.date,+d.v))},
   now(){S.date=today();S.time='now';render()},
   filter(d){S.filter=d.v;render()},
-  bookRoom(d){
-    const tt=curT(); S.book=newBook(); const B=S.book;
-    B.date=S.date;B.days=[dow(S.date)];B.rooms=[d.id];B.date2=addDays(B.date,13);
-    if(S.time==='all')B.allDay=true; else B.start=clampStart(Math.floor(tt/ST.step)*ST.step);
-    fixDays(B); go('book');
+  bookRoom(d){startBooking(d.id,S.date,S.time)},
+  bookAt(d){startBooking(d.id,d.date,d.time==='all'?'all':+d.time)},
+  freeGo(d){
+    if(canReq())startBooking(d.id,d.date,d.time==='all'?'all':d.time==='now'?'now':+d.time);
+    else{S.bld=d.b;go('f'+d.f)}
   },
-  freeGo(d){if(canReq())A.bookRoom(d);else go('f'+d.f)},
+  setBld(d){S.bld=d.v;go('f1');render()},
   toggleDay(d){const B=S.book,v=+d.v;const i=B.days.indexOf(v);if(i>=0){if(B.days.length>1)B.days.splice(i,1)}else B.days.push(v);render()},
-  setRec(d){S.book.rec=d.v;fixDays(S.book);render()},
+  setRec(d){const B=S.book;B.rec=d.v;if(d.v==='dates'&&!B.dates.length)B.dates=[B.date];fixDays(B);render()},
+  calNav(d){const B=S.book,dd=parseD(B.cal);dd.setMonth(dd.getMonth()+ +d.v);B.cal=isoD(dd).slice(0,7)+'-01';render()},
+  calDay(d){const B=S.book,i=B.dates.indexOf(d.v);if(i>=0)B.dates.splice(i,1);else B.dates.push(d.v);render()},
   pickRoom(d){const B=S.book,i=B.rooms.indexOf(d.id);if(i>=0)B.rooms.splice(i,1);else B.rooms.push(d.id);render()},
   async saveBook(){
     const B=S.book, isReq=S.role!=='admin', title=B.title.trim();
     if(!B.rooms.length){toast(t('pickRoomFirst'));return}
     if(isReq&&!B.name.trim()){toast(t('needYourName'));return}
     if(!title){toast(t('need'));return}
-    if(!B.days.length){toast(t('needDay'));return}
-    const b={roomIds:[...B.rooms],title,notes:B.notes.trim(),days:[...B.days].sort(),start:B.allDay?0:B.start,end:B.allDay?1440:Math.min(B.start+B.dur,1440),allDay:B.allDay,
-      startDate:B.date,endDate:endDateFor(B),rec:B.rec,exceptions:[]};
+    if(B.rec==='dates'&&!B.dates.length){toast(t('needDates'));return}
+    if(B.rec!=='dates'&&!B.days.length){toast(t('needDay'));return}
+    const b={roomIds:[...B.rooms],title,notes:B.notes.trim(),...bookingFrom(B)};
     if(DATA.bookings.some(x=>x.roomIds.some(r=>b.roomIds.includes(r))&&conflicts(b,x))){toast(t('conflict'));render();return}
     try{
       if(isReq){
@@ -1009,7 +1234,7 @@ const A={
   },
   async approveReq(d){
     const q=DATA.requests.find(x=>x.id===d.id); if(!q)return;
-    const b={roomIds:q.roomIds,title:q.title,notes:q.notes||'',by:q.name+(q.phone?` (${q.phone})`:''),days:q.days,start:q.start,end:q.end,allDay:!!q.allDay,startDate:q.startDate,endDate:q.endDate??null,rec:q.rec,exceptions:[]};
+    const b={roomIds:q.roomIds,title:q.title,notes:q.notes||'',by:q.name+(q.phone?` (${q.phone})`:''),days:q.days||[],start:q.start,end:q.end,allDay:!!q.allDay,startDate:q.startDate,endDate:q.endDate??null,rec:q.rec,exceptions:[],...(q.dates?{dates:q.dates}:{})};
     if(DATA.bookings.some(x=>x.roomIds.some(r=>b.roomIds.includes(r))&&conflicts(b,x))){toast(t('conflict'));return}
     try{await backend.addBooking(b);await backend.deleteRequest(q.id);toast(t('approved'))}catch(e){console.error(e);toast(t('netErr'))}
   },
@@ -1032,9 +1257,10 @@ const A={
     const b=DATA.bookings.find(x=>x.id===d.id); if(!b)return;
     openModal(t('editBook'),`<div class="f"><label>${t('title')}</label><input class="fld" id="m1" value="${esc(b.title)}"></div>
       <div class="f"><label>${t('notes')}</label><textarea class="fld" id="m2">${esc(b.notes||'')}</textarea></div>
-      <div class="f"><label>${t('editEnd')}</label><input class="fld" type="date" id="m3" min="${b.startDate}" value="${b.endDate||''}"></div>`,
+      ${b.dates?`<div class="note">${esc(bkWhen(b).days)}</div>`:`<div class="f"><label>${t('editEnd')}</label><input class="fld" type="date" id="m3" min="${b.startDate}" value="${b.endDate||''}"></div>`}`,
       async()=>{
         const v=$('#m1').value.trim(); if(!v){toast(t('need'));return false}
+        if(b.dates){await backend.updateBooking(b.id,{title:v,notes:$('#m2').value.trim()});toast(t('updated'));return}
         const ed=$('#m3').value||null;
         if(ed&&ed<b.startDate){toast(t('endBad'));return false}
         const nb={...b,endDate:ed};
@@ -1072,7 +1298,7 @@ const A={
   },
   async addRoom(){
     const R=S.rf; if(!R.ar.trim()&&!R.en.trim()){toast(t('needName'));return}
-    const r={floor:R.floor,type:R.type,nameAr:R.ar.trim(),nameEn:R.en.trim(),cap:R.cap?+R.cap:null};
+    const r={buildingId:R.bld,floor:R.floor,type:R.type,nameAr:R.ar.trim(),nameEn:R.en.trim(),cap:R.cap?+R.cap:null};
     try{await backend.addRoom(r);S.rf={...R,ar:'',en:'',cap:''};toast(t('roomAdded'));render()}catch(e){toast(t('netErr'))}
   },
   async seed(){try{await backend.seed()}catch(e){toast(t('netErr'))}},
@@ -1082,14 +1308,41 @@ const A={
   },
   editRoom(d){
     const r=roomById(d.id); if(!r)return;
-    openModal(t('editRoom'),`<div class="f"><label>${t('floor')}</label><select class="fld" id="m5">${[1,2,3,4,5,6].map(n=>`<option value="${n}" ${r.floor===n?'selected':''}>${floorName(n)}</option>`).join('')}</select></div>
-      <div class="f"><label>${t('type')}</label><select class="fld" id="m3"><option value="room" ${r.type==='room'?'selected':''}>${t('room')}</option><option value="hall" ${r.type==='hall'?'selected':''}>${t('hall')}</option></select></div>
+    openModal(t('editRoom'),`<div class="f"><label>${t('bldL')}</label><select class="fld" id="m6" data-ch="mbld">${bldOpts(r.buildingId)}</select></div>
+      <div class="f"><label>${t('floor')}</label><select class="fld" id="m5">${floorOptsFor(r.buildingId,r.floor)}</select></div>
+      <div class="f"><label>${t('type')}</label><select class="fld" id="m3">${typeOpts(r.type)}</select></div>
       <div class="f"><label>${t('nameAr')}</label><input class="fld" id="m1" value="${esc(r.nameAr||'')}"></div>
       <div class="f"><label>${t('nameEn')}</label><input class="fld" id="m2" dir="ltr" value="${esc(r.nameEn||'')}"></div>
       <div class="f"><label>${t('capL')}</label><input class="fld" id="m4" type="number" min="1" value="${esc(r.cap||'')}"></div>`,
       async()=>{const ar=$('#m1').value.trim(),en=$('#m2').value.trim();if(!ar&&!en){toast(t('needName'));return false}
-        const cap=$('#m4').value;await backend.updateRoom(r.id,{nameAr:ar,nameEn:en,type:$('#m3').value,floor:+$('#m5').value,cap:cap?+cap:null});toast(t('updated'))});
+        const cap=$('#m4').value;await backend.updateRoom(r.id,{nameAr:ar,nameEn:en,type:$('#m3').value,buildingId:$('#m6').value,floor:+$('#m5').value,cap:cap?+cap:null});toast(t('updated'))});
   },
+  async addBld(){
+    const F=S.bf; if(!F.ar.trim()&&!F.en.trim()){toast(t('needBldName'));return}
+    const nb={id:uid(),nameAr:F.ar.trim(),nameEn:F.en.trim(),floors:Math.min(12,Math.max(1,+F.n||1))};
+    try{await backend.saveSettings({buildings:[...(ST.buildings||[]),nb]});S.bf={ar:'',en:'',n:F.n};S.rf.bld=nb.id;S.rf.floor=1;toast(t('bldAdded'));render()}catch(e){console.error(e);toast(t('netErr'))}
+  },
+  editBld(d){
+    const b=(ST.buildings||[]).find(x=>x.id===d.id); if(!b)return;
+    openModal(t('editBld'),`<div class="f"><label>${t('bldNameAr')}</label><input class="fld" id="m1" value="${esc(b.nameAr||'')}"></div>
+      <div class="f"><label>${t('bldNameEn')}</label><input class="fld" id="m2" dir="ltr" value="${esc(b.nameEn||'')}"></div>
+      <div class="f"><label>${t('floorsN')}</label><input class="fld" id="m3" type="number" min="1" max="12" value="${b.floors}"></div>`,
+      async()=>{const ar=$('#m1').value.trim(),en=$('#m2').value.trim();if(!ar&&!en){toast(t('needBldName'));return false}
+        const fl=Math.min(12,Math.max(1,+$('#m3').value||1));
+        await backend.saveSettings({buildings:ST.buildings.map(x=>x.id===b.id?{...x,nameAr:ar,nameEn:en,floors:fl}:x)});toast(t('updated'))});
+  },
+  async delBld(d){
+    const v=await ask(t('confDelBld'),[{l:t('del'),v:'y',cls:'red'},{l:t('keep'),v:'n',cls:'ghost'}]); if(v!=='y')return;
+    try{
+      for(const r of DATA.rooms.filter(r=>r.buildingId===d.id))await backend.deleteRoom(r.id);
+      await backend.saveSettings({buildings:(ST.buildings||[]).filter(x=>x.id!==d.id)});
+      if(S.bld===d.id){S.bld='main';S.tab='f1'}
+      toast(t('deleted'))
+    }catch(e){console.error(e);toast(t('netErr'))}
+  },
+  whMode(d){S.wh.mode=d.v;render()},
+  whClear(){S.wh.date='';S.wh.time='now';render()},
+  whWeek(d){const w=addDays(S.wh.week,+d.v);S.wh.week=w<weekStart(today())?weekStart(today()):w;render()},
   mclose(d,el,e){if(el.classList.contains('ov')&&e.target!==el)return;closeModal()},
   mask(d){const m=S.modal;if(!m||!m.ask)return;S.modal=null;$('#modal').innerHTML='';m.ask(d.v)},
   async msave(){const f=S.modal&&S.modal.onSave;if(!f)return;try{const r=await f();if(r!==false)closeModal()}catch(e){console.error(e);toast(t('netErr'))}}
@@ -1112,13 +1365,20 @@ document.addEventListener('change',e=>{
   else if(k==='bstart'){S.book.start=+v;render()}
   else if(k==='bdur'){if(v==='all')S.book.allDay=true;else{S.book.allDay=false;S.book.dur=+v}render()}
   else if(k==='bfloor'){S.bq.floor=v;render()}
+  else if(k==='rfbld'){S.rf.bld=v;S.rf.floor=1;render()}
   else if(k==='rffloor'){S.rf.floor=+v}
   else if(k==='rftype'){S.rf.type=v}
+  else if(k==='mbld'){const m=$('#m5');if(m)m.innerHTML=floorOptsFor(v,1)}
+  else if(k==='whdate'){S.wh.date=v;render()}
+  else if(k==='whtime'){S.wh.time=v==='now'?'now':v==='all'?'all':+v;render()}
+  else if(k==='whflt'){S.wh.flt=v;render()}
+  else if(k==='whmin'){S.wh.min=+v;render()}
 });
 document.addEventListener('input',e=>{
   const k=e.target.dataset.in; if(!k)return; const v=e.target.value;
   if(k==='btitle')S.book.title=v; else if(k==='bnotes')S.book.notes=v; else if(k==='bname')S.book.name=v; else if(k==='bphone')S.book.phone=v;
   else if(k==='rf-ar')S.rf.ar=v; else if(k==='rf-en')S.rf.en=v; else if(k==='rf-cap')S.rf.cap=v;
+  else if(k==='bf-ar')S.bf.ar=v; else if(k==='bf-en')S.bf.en=v; else if(k==='bf-n')S.bf.n=v;
   else if(k==='bsearch'){S.bq.q=v;render();const i=$('#bsearch');if(i){i.focus();i.setSelectionRange(v.length,v.length)}}
 });
 document.addEventListener('keydown',e=>{
